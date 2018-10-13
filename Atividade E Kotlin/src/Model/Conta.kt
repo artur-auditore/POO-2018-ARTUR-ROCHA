@@ -8,8 +8,14 @@ class Conta{
     var senha: Int = 0
     var logada: Boolean = false
 
+
     fun logarConta(): Boolean{
         this.logada = true
+        return logada
+    }
+
+    fun logout(): Boolean{
+        this.logada = false
         return logada
     }
 
@@ -31,26 +37,29 @@ class Conta{
 
     fun saca(valor: Double): Boolean{
 
-        return if (this.saldo < valor){
+        return if (this.saldo > valor){
 
-            this.saldo = this.saldo - valor
+            this.saldo -= valor
             true
+
         } else{
             false
         }
     }
 
-    fun transfere(conta: Conta, valor: Double): Boolean{
-
-        if (this.saldo < valor){
-
-            this.saldo = this.saldo - valor
-            conta.deposita(valor)
-            return true
-        } else{
-            return false
-        }
-    }
+//      Não soube o que fazer com esse método
+//    fun transfere(conta: Conta, valor: Double): Boolean{
+//
+//        return if (this.saldo > valor){
+//
+//            this.saldo -= valor
+//            conta.deposita(valor)
+//            true
+//
+//        } else{
+//            false
+//        }
+//    }
 
     fun dados(): String {
         var dados = "Titular: " + this.titular.nome

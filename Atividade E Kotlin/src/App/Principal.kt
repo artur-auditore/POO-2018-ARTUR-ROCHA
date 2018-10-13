@@ -7,10 +7,11 @@ fun main(args: Array<String>) {
     val banco = Banco()
     banco.nome = "Nubank"
 
-    val menu = "*** BANCO ***" +
+    val menu = "***" + banco.nome + "***" +
             "\n1 - Abrir Conta" +
             "\n2 - Depositar via Envelope" +
             "\n3 - Login" +
+            "\n4 - Infomações de todas as contas" +
             "\n0 - Fechar\n"
 
     while (true){
@@ -31,10 +32,6 @@ fun main(args: Array<String>) {
                 banco.novaConta(nome, cpf, senha)
                 println("Conta criada com sucesso\n" +
                         "Numero de sua conta: " + banco.obterNumConta())
-
-                println("Contas: " + banco.contas.size)
-
-
 
             } else{
                 println("Dados Inválidos. Tente Novamente.\n")
@@ -83,7 +80,7 @@ fun main(args: Array<String>) {
                         println("Senha: ")
                         val senha: Int = readLine()!!.toInt()
 
-                        if (banco.validarSaque(senha, valor)){
+                        if (banco.sacar(senha, valor)){
                             println("Saque realizado com sucesso.")
 
                             for (conta: Conta in banco.contas){
@@ -100,7 +97,7 @@ fun main(args: Array<String>) {
                     } else if (op == 2){
 
                         println("Valor a depositar: ")
-                        var valor: Double = readLine()!!.toDouble()
+                        val valor: Double = readLine()!!.toDouble()
 
                         if (banco.depositar(nConta, valor)){
                             println("Depósito Realizado com sucesso.\n")
@@ -112,11 +109,15 @@ fun main(args: Array<String>) {
                     } else if (op == 3){
 
                         println("Número da Conta a transferir: ")
-                        var nConta: Int = readLine()!!.toInt()
+                        val nConta: Int = readLine()!!.toInt()
                         println("Valor: ")
-                        var valor: Double = readLine()!!.toDouble()
+                        val valor: Double = readLine()!!.toDouble()
 
-                        if (banco.transferir(nConta, valor)){
+                        if (banco.transferir(banco.obterNumConta(), nConta, valor )){
+                            println("Tranferência realizada com sucesso.")
+
+                        } else {
+                            println("Erro. Tente Novamente.")
                         }
 
                     //Mostrar Informações da Conta
@@ -125,11 +126,24 @@ fun main(args: Array<String>) {
 
                     //Sair
                     } else if(op == 5){
+
+                        banco.sair(nConta)
                         break
                     }
                 }
+
             }else {
                 println("Número da Conta ou senha inválidos. Tente novamente.")
+            }
+
+        } else if (op == 4){
+            val senhaInfo = "contas"
+            println("Senha: ")
+            val senha: String = readLine()!!.toString()
+
+            if (senha == senhaInfo){
+                println("Contas registradas: " + banco.contas.size)
+                println(banco.imprimeDadosArray())
             }
 
         } else if(op == 0){
