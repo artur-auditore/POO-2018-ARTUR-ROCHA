@@ -3,7 +3,6 @@ package Model
 class Git{
 
     val repositorios = arrayListOf<Repositorio>()
-    val pasta = arrayListOf<Arquivo>()
     val repositorioRemoto = RepositorioRemoto()
 
     fun novoRepositorio(nome: String){
@@ -73,31 +72,33 @@ class Git{
     }
 
     fun excluir(nome: String){
-
-        for (repositorio: Repositorio in repositorios)
-            if (repositorio.isAberto())
-                repositorio.excluir(nome)
+        //todo essa merda não quer funcionar
+//        for (repositorio: Repositorio in repositorios)
+//            if (repositorio.isAberto())
+//                repositorio.excluir(nome)
     }
 
+    fun excluirTudo(){
+        for (repositorio: Repositorio in repositorios) if (repositorio.isAberto())
+            repositorio.excluirTudo()
+    }
 
-    fun addStageArea(nome: String): Boolean {
-        for (arquivo: Arquivo in pasta) if (arquivo.nome == nome){
-            arquivo.addStageArea()
-            return true
-        }
-        return false
+    fun addStageArea(nome: String){
+        for (repositorio: Repositorio in repositorios) if (repositorio.isAberto())
+            repositorio.addStageArea(nome)
     }
 
     fun addAllStageArea(){
-        for (arquivo: Arquivo in pasta) arquivo.addStageArea()
+        for (repositorio: Repositorio in repositorios) if (repositorio.isAberto())
+            repositorio.addAllStageArea()
     }
 
     fun listarArquivos(): String {
-
+        var dados = ""
         for (repositorio: Repositorio in repositorios)
             if (repositorio.isAberto())
-                return repositorio.listarArquivos()
-        return ""
+                dados = repositorio.listarArquivos()
+        return dados
     }
 
     fun commit(frase: String): Boolean {
@@ -109,15 +110,15 @@ class Git{
 
     }
 
-    fun sincronizarRepositorios(nome: String){ //Apenas arquivos por enquanto
+    fun sincronizarRepositorios(nomeRepositorio: String){ //Apenas arquivos por enquanto
         for (repositorio: Repositorio in repositorios){
-            if (repositorio.nome == nome){
-                for (arquivo: Arquivo in repositorio.arquivos){
+            if (repositorio.nome == nomeRepositorio){
+                for (arquivo: Arquivo in repositorio.arquivos)
                     if (arquivo.addStageArea && arquivo.commits.size >= 1){
+
                         arquivo.addRepRemoto()
                         repositorioRemoto.arquivos.add(arquivo)
                     }
-                }
             }
         }
     }
@@ -131,6 +132,4 @@ class Git{
             }
         }
     }
-
-
 }

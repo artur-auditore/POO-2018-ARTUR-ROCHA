@@ -51,12 +51,16 @@ class Repositorio{
 
     }
 
-    fun excluir(nome: String){
-        //TODO falta esse
+    fun excluir(nome: String){ //todo não esquecer
         for (arquivo: Arquivo in arquivos)
             if (arquivo.nome == nome){
                 arquivos.remove(arquivo)
             }
+    }
+
+    fun excluirTudo(){
+        for (arquivo: Arquivo in arquivos)
+            arquivos.remove(arquivo)
     }
 
     fun editar(nome: String, novoConteudo: String){
@@ -78,6 +82,21 @@ class Repositorio{
         }
 
         return dados
+    }
+
+    fun addStageArea(nome: String){
+        for (arquivo: Arquivo in arquivos)
+            if (arquivo.nome == nome)
+                arquivo.addStageArea()
+    }
+
+    fun addAllStageArea(){
+        for (arquivo: Arquivo in arquivos)
+            arquivo.addStageArea()
+    }
+
+    fun status(){
+        //todo fazer metodo status
     }
 
 }

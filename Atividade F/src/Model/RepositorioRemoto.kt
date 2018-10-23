@@ -12,10 +12,9 @@ class RepositorioRemoto{
     }
 
     fun verfificarVazio(): Boolean {
-        for (arquivo: Arquivo in arquivos)
-            if (arquivos.isEmpty()) {
-                return true
-            }
+        if (arquivos.size < 1) {
+            return true
+        }
         return false
     }
 

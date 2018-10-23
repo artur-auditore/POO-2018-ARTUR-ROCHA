@@ -6,21 +6,24 @@ fun main(args: Array<String>){
 
     val git = Git()
 
-    println ("**************SIMULADOR GITHUB****************" +
-            "\n1 - Novo Repositório" +
+    val menu = "**************SIMULADOR GITHUB****************" +
+            "\nPara obter ajuda, digite help" +
+            "\n1 - Novo Repositório" + //"git init"
             "\n2 - Abrir Repositório" +
-            "\n3 - Listar Repositórios" +
+            "\n3 - Listar Repositórios" + // ls
             "\n4 - Abrir Repositório Remoto" +
-            "\n5 - Sincronizar repositório local com o remoto" +
-            "\n6 - Clone do repositório remoto" +
-            "\n0 - Sair")
+            "\n5 - Sincronizar repositório local com o remoto" + //git pull
+            "\n6 - Clone do repositório remoto" + //"git clone"
+            "\n0 - Sair"
+    println(menu)
 
     loop@ while (true){
+
         print("Opção: ")
-        val opcao = readLine()!!.toInt()
+        val opcao = readLine()!!.toString()
 
         when (opcao){
-            1-> {
+            "1"-> {
                 //Criação de Repositório local
 
                 print("Nome do Repositório: ")
@@ -29,7 +32,7 @@ fun main(args: Array<String>){
                 println("Repositório Criado.")
 
             }
-            2-> {
+            "2"-> {
                 //Abre repositório, se o array estiver vazio será impossível abrir algum
 
                 if (git.repositorios.isEmpty()){
@@ -41,7 +44,8 @@ fun main(args: Array<String>){
                     val nome = readLine()!!.toString()
                     git.abrirRepositorio(nome)
 
-                    println("\n1 - Novo Arquivo" +
+                    val menuRepositorio = "Para obter ajuda, digite help" +
+                            "\n1 - Novo Arquivo" +
                             "\n2 - Renomear" +
                             "\n3 - Excluir" +
                             "\n4 - Abrir" + //Edita também
@@ -50,28 +54,30 @@ fun main(args: Array<String>){
                             "\n7 - Excluir todos" +
                             "\n8 - Listar (por nome)" +
                             "\n9 - Fazer commit" +
-                            "\n0 - Sair")
+                            "\n10 - Status dos arquivos" +
+                            "\n0 - Sair"
+                    println(menuRepositorio)
 
                     loop1@ while(true){
-                        val opcao = readLine()!!.toInt()
+                        val opc = readLine()!!.toString()
 
-                        when(opcao){
-                            1 ->{
+                        when(opc){
+                            "1" ->{
                                 //Novo Arquivo
 
                                 print("Nome: ")
-                                val nome = readLine()!!.toString()
+                                val nomeArquivo = readLine()!!.toString()
 
-                                if (nome.trim() == "")
+                                if (nomeArquivo.trim() == "")
                                     println("Tente novamente com um novo nome.")
 
                                 println("Conteúdo:")
                                 val conteudo = readLine()!!.toString()
 
-                                git.novoArquivo(nome, conteudo)
+                                git.novoArquivo(nomeArquivo, conteudo)
                                 println("Arquivo criado.")
                             }
-                            2 ->{
+                            "2" ->{
                                 //Renomear
 
                                 if (git.verfificarVazio()){
@@ -82,17 +88,15 @@ fun main(args: Array<String>){
                                     print("Qual arquivo deseja renomear?")
                                     println(git.listarArquivos())
 
-                                    val nome = readLine()!!.toString()
+                                    val nomeArquivo = readLine()!!.toString()
                                     print("Novo nome: ")
                                     val novoNome = readLine()!!.toString()
 
-                                    git.renomear(nome, novoNome)
+                                    git.renomear(nomeArquivo, novoNome)
                                     println("Renomeado.")
-
                                 }
-
                             }
-                            3 ->{
+                            "3" ->{
                                 //Excluir
 
                                 if (git.verfificarVazio()){
@@ -102,16 +106,13 @@ fun main(args: Array<String>){
 
                                     print("Qual arquivo deseja excluir?")
                                     println(git.listarArquivos())
-                                    val nome = readLine()!!.toString()
+                                    val nomeArquivo = readLine()!!.toString()
 
-                                    git.excluir(nome)
+                                    git.excluir(nomeArquivo)
                                     println("Apagado.")
-
                                 }
-
                             }
-                            4 ->{
-                                //TODO Abrir arquivo (a pretensão é editar também)
+                            "4" ->{
 
                                 if (git.verfificarVazio()){
                                     println("Nenhum arquivo criado! Crie um e tente novamente.")
@@ -133,11 +134,9 @@ fun main(args: Array<String>){
                                         println("Modificado.")
 
                                     }
-
                                 }
-
                             }
-                            5 ->{
+                            "5" ->{
                                 //Adicionar a Stage Área
 
                                 if (git.verfificarVazio()){
@@ -149,27 +148,28 @@ fun main(args: Array<String>){
                                     println(git.listarArquivos())
 
                                     print("Nome: ")
-                                    val nome = readLine()!!.toString()
+                                    val nomeArquivo = readLine()!!.toString()
 
-                                    git.addStageArea(nome)
+                                    git.addStageArea(nomeArquivo)
                                     println("Adicionado.")
-
                                 }
-
                             }
-                            6 ->{
+                            "6" ->{
                                 //Adicionar todos a Stage Área
                                 if (git.verfificarVazio()){
                                     println("Nenhum arquivo criado! Crie um e tente novamente.")
 
                                 } else {
-
-                                    git.addAllStageArea()
-                                    println("Todos adicionados")
+                                    val op = readLine()!!.toString()
+                                    if (op == "y"){
+                                        git.addAllStageArea()
+                                        println("Todos adicionados.")
+                                    } else {
+                                        println("Opção revogada.")
+                                    }
                                 }
-
                             }
-                            7 ->{
+                            "7" ->{
                                 //Apagar todos de uma vez
                                 if (git.verfificarVazio()){
                                     println("Nenhum arquivo criado! Crie um e tente novamente.")
@@ -179,16 +179,15 @@ fun main(args: Array<String>){
                                     val op = readLine()!!.toString()
 
                                     if (op == "y"){
-//                                        git.excluirTodos()
+//                                        git.excluirTudo()
                                         println("Todos apagados.")
 
                                     } else {
                                         println("Opção revogada.")
                                     }
                                 }
-
                             }
-                            8 ->{
+                            "8" ->{
                                 //Listar
                                 if (git.verfificarVazio()){
                                     println("Nenhum arquivo criado! Crie um e tente novamente.")
@@ -198,7 +197,7 @@ fun main(args: Array<String>){
                                     println(git.listarArquivos())
                                 }
                             }
-                            9 ->{
+                            "9" ->{
                                 //Commit dos arquivos
                                 if (git.verfificarVazio()){
                                     println("Nenhum arquivo criado! Crie um e tente novamente.")
@@ -211,58 +210,65 @@ fun main(args: Array<String>){
                                     git.commit(commit)
                                     println("Arquivos commitados.")
                                 }
+                            }
+                            "10" ->{
+                                //Status todo não esquecer
 
                             }
-                            0 ->{
+                            "0" ->{
                                 //Sair
                                 println("Você retornou ao menu principal.")
                                 git.fecharRepositorio()
                                 break@loop1
                             }
+                            "help" ->{
+                                println(menuRepositorio)
+                            }
+                            else ->{
+                                println("Opção inválida! Tente novamente.")
+                            }
                         }
                     }
 
                 }
-
             }
-            3-> {
+            "3"-> {
                 //Lista apenas os nomes dos repositórios criados pelo usuário
 
                 println(git.listarRepositorios())
 
             }
-            4 ->{
-                //Abrir repositório remoto (para conferência) TODO fazer funcionar direito
+            "4" ->{
+                //Abrir repositório remoto (para conferência)
+
+                if (git.repositorioRemoto.nome.trim() == "") {
+
+                    println("Deseja dar um nome para este repositório?(y/n)")
+                    val op = readLine()!!.toString()
+
+                    if (op == "y") {
+                        print("Nome: ")
+                        val nomeRepRemoto = readLine()!!.toString()
+                        git.repositorioRemoto.nome = nomeRepRemoto
+                        println("Nomeado.")
+
+                    } else {
+                        git.repositorioRemoto.nome = "Sem título"
+
+                    }
+                }
 
                 if (git.repositorioRemoto.verfificarVazio()) {
                     println("Impossível visualizar! Repositório vazio.")
 
                 } else {
-
-                    if (git.repositorioRemoto.nome.trim() == ""){
-
-                        println("Deseja dar um nome para este repositório?(y/n)")
-                        val op = readLine()!!.toString()
-
-                        if (op == "y"){
-                            print("Nome: ")
-                            val nome = readLine()!!.toString()
-                            git.repositorioRemoto.nome = nome
-                            println("Nomeado.")
-
-                        } else {
-                            git.repositorioRemoto.nome = "Sem título"
-
-                        }
-
-                    }
                     git.repositorioRemoto.abrir()
                     println(git.repositorioRemoto.listar())
 
                 }
             }
-            5 ->{
-                //Sincronizar com o repositorio remoto (semelhante ao "git push") TODO fazer funcionar direito
+            "5" ->{
+                //Sincronizar com o repositorio remoto ("git push")
 
                 println("Qual repositório local deseja sincronizar?")
                 println(git.listarRepositorios())
@@ -273,13 +279,14 @@ fun main(args: Array<String>){
                 println("Sincronizado.")
 
             }
-            6 ->{
-                //Clone do repositório remoto (semelhante ao comando "git clone") TODO fazer funcionar direito
+            "6" ->{
+                //Clone do repositório remoto ("git clone")
 
                 if (git.repositorios.isEmpty()){
                     println("Impossível clonar! Crie um repositório local e tente novamente.")
 
                 } else {
+
                     println("Para qual repositório deseja clonar?")
                     println(git.listarRepositorios())
 
@@ -287,11 +294,16 @@ fun main(args: Array<String>){
                     git.clone(nomeRepo)
 
                     println("Clonado.")
-
                 }
             }
-            0-> {
+            "0"-> {
                 break@loop
+            }
+            "help" ->{
+                println(menu)
+            }
+            else ->{
+                println("Opção inválida! Tente novamente.")
             }
         }
     }
