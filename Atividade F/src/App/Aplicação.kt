@@ -129,7 +129,7 @@ fun main(args: Array<String>){
 
                                     if (yn == "y"){
                                         val novoConteudo = readLine()!!.toString()
-                                        git.editar(nome, novoConteudo)
+                                        git.editar(nomeArquivo, novoConteudo)
                                         println("Modificado.")
 
                                     }

@@ -65,10 +65,10 @@ class Git{
         return c
     }
 
-    fun editar(nome: String, conteudo: String){
+    fun editar(nome: String, novoConteudo: String){
         for (repositorio: Repositorio in repositorios)
             if (repositorio.isAberto())
-                repositorio.editar(nome, conteudo)
+                repositorio.editar(nome, novoConteudo)
 
     }
 

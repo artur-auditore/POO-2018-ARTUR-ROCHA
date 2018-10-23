@@ -59,10 +59,10 @@ class Repositorio{
             }
     }
 
-    fun editar(nome: String, conteudo: String){
+    fun editar(nome: String, novoConteudo: String){
         for (arquivo: Arquivo in arquivos)
             if (arquivo.nome == nome)
-                arquivo.editar(conteudo)
+                arquivo.editar(novoConteudo)
     }
 
     fun commitar(texto: String){
