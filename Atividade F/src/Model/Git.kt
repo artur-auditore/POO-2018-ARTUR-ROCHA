@@ -70,9 +70,9 @@ class Git{
 
     fun excluir(nome: String){
 
-        for (repositorio: Repositorio in repositorios) if (repositorio.isAberto()){
-                return repositorio.excluir(nome)
-            }
+        for (repositorio: Repositorio in repositorios)
+            if (repositorio.isAberto())
+                repositorio.excluir(nome)
     }
 
 

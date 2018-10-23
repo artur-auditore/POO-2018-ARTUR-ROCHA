@@ -29,7 +29,7 @@ class Repositorio{
         arquivo.nome = nome
         arquivo.conteudo = conteudo
 
-        this.arquivos.add(arquivo)
+        arquivos.add(arquivo)
     }
 
     fun abrir(nome: String): String {
@@ -51,13 +51,14 @@ class Repositorio{
 
     fun excluir(nome: String){
         //TODO falta esse
+        for (arquivo: Arquivo in arquivos)
+            if (arquivo.nome == nome){
+                arquivos.remove(arquivo)
+            }
     }
 
     fun editar(nome: String, conteudo: String){
-        for (arquivo: Arquivo in arquivos) if (arquivo.nome == nome){
-            arquivo.editar(conteudo)
-            arquivo.modificado()
-        }
+
     }
 
     fun commitar(texto: String){

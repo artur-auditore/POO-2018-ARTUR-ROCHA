@@ -190,8 +190,13 @@ fun main(args: Array<String>){
                             }
                             8 ->{
                                 //Listar
+                                if (git.verfificarVazio()){
+                                    println("Nenhum arquivo criado! Crie um e tente novamente.")
 
-                                println(git.listarArquivos())
+                                } else {
+
+                                    println(git.listarArquivos())
+                                }
                             }
                             9 ->{
                                 //Commit dos arquivos
@@ -210,7 +215,7 @@ fun main(args: Array<String>){
                             }
                             0 ->{
                                 //Sair
-                                println("Retornando ao menu principal")
+                                println("Você retornou ao menu principal.")
                                 git.fecharRepositorio()
                                 break@loop1
                             }
