@@ -10,13 +10,12 @@ class Arquivo {
     var commits = arrayListOf<String>()
     var modificado = 0
 
-    fun abrir(): String { //Apenas mostra o conteúdo
+    fun mostrarConteudo(): String { //Apenas mostra o conteúdo
         return this.conteudo
     }
 
-    fun editar(conteudo: String): Boolean {
+    fun editar(conteudo: String) {
         this.conteudo = conteudo
-        return true
     }
 
     fun renomear(nome: String): Boolean {

@@ -56,15 +56,19 @@ class Git{
             if (repositorio.isAberto()) repositorio.renomear(nome, novoNome)
     }
 
-    fun abrir(nome: String): String{
+    fun abrir(nome: String): String {
+        var c = ""
         for (repositorio: Repositorio in repositorios)
-            if (repositorio.isAberto()) return repositorio.abrir(nome)
-        return ""
+            if (repositorio.isAberto()){
+                c = repositorio.abrir(nome)
+            }
+        return c
     }
 
     fun editar(nome: String, conteudo: String){
         for (repositorio: Repositorio in repositorios)
-            if (repositorio.isAberto()) repositorio.editar(nome, conteudo)
+            if (repositorio.isAberto())
+                repositorio.editar(nome, conteudo)
 
     }
 

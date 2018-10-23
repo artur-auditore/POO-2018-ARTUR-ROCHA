@@ -33,11 +33,13 @@ class Repositorio{
     }
 
     fun abrir(nome: String): String {
-
+        var conteudo = ""
         for (arquivo: Arquivo in arquivos)
-            if (arquivo.nome == nome) return arquivo.abrir()
+            if (arquivo.nome == nome) {
+                conteudo = arquivo.mostrarConteudo()
+            }
 
-        return ""
+        return conteudo
     }
 
     fun renomear(nome: String, novoNome: String){
@@ -58,7 +60,9 @@ class Repositorio{
     }
 
     fun editar(nome: String, conteudo: String){
-
+        for (arquivo: Arquivo in arquivos)
+            if (arquivo.nome == nome)
+                arquivo.editar(conteudo)
     }
 
     fun commitar(texto: String){
