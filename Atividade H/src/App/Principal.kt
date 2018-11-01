@@ -20,16 +20,19 @@ fun main(args: Array<String>) {
     loop@ while (true) {
         print("Opção: ")
         val op = readLine()!!.toString()
+
         when (op) {
+
+            //Abrir Conta
             "1" -> {
 
-                println("CPF: ")
+                print("CPF: ")
                 val cpf: String = readLine()!!.toString()
-                println("Nome: ")
+                print("Nome: ")
                 val nome: String = readLine()!!.toString()
-                println("Senha: ")
+                print("Senha: ")
                 val senha: Int = readLine()!!.toInt()
-                println("Confirme a senha: ")
+                print("Confirme a senha: ")
                 val confirmSenha: Int = readLine()!!.toInt()
 
                 if (senha == confirmSenha) {
@@ -37,7 +40,8 @@ fun main(args: Array<String>) {
                             "\n1 - Conta Corrente" +
                             "\n2 - Conta Poupança" +
                             "\n3 - Conta Digital" +
-                            "\n4 - Conta Investimento")
+                            "\n4 - Conta Investimento" +
+                            "\n5 - Conta Capitalização")
 
                     val tipo = readLine()!!.toInt()
 
@@ -50,11 +54,13 @@ fun main(args: Array<String>) {
                 }
 
             }
+
+            //Depósito via envelope
             "2" -> {
 
-                println("Número da Conta: ")
+                print("Número da Conta: ")
                 val nConta: Int = readLine()!!.toInt()
-                println("Valor: ")
+                print("Valor: ")
                 val valor: Double = readLine()!!.toDouble()
 
                 if (banco.depositar(nConta, valor)) {
@@ -63,11 +69,13 @@ fun main(args: Array<String>) {
                     println("Erro. Tente Novamente\n")
                 }
             }
+
+            //Login
             "3" -> {
 
-                println("Número da Conta: ")
+                print("Número da Conta: ")
                 val nConta: Int = readLine()!!.toInt()
-                println("Senha: ")
+                print("Senha: ")
                 val senha: Int = readLine()!!.toInt()
 
                 if (banco.logarConta(nConta, senha)) {
@@ -88,29 +96,30 @@ fun main(args: Array<String>) {
 
                         //Sacar
                         if (op == 1) {
-
-                            println("Valor a sacar: ")
-                            val valor: Double = readLine()!!.toDouble()
-                            println("Senha: ")
-                            val senha: Int = readLine()!!.toInt()
-
-                            if (banco.sacar(senha, valor)) {
-                                println("Saque realizado com sucesso.")
-
-                                for (conta: Conta in banco.contas) {
-                                    if (senha == conta.senha) {
-                                        println("Saldo disponível: " + conta.saldo)
-                                    }
-                                }
-
+                            if (banco.typeBoolConta()){
+                                println("Conta digital. Impossível sacar.")
                             } else {
-                                println("Erro. Tente novamente.")
+
+                                print("Valor a sacar: ")
+                                val valor: Double = readLine()!!.toDouble()
+                                print("Senha: ")
+                                val senha: Int = readLine()!!.toInt()
+
+                                if (banco.sacar(senha, valor)) {
+                                    println("Saque realizado com sucesso.")
+                                    println(banco.saldoDisponivel(senha))
+
+                                } else {
+                                    println("Erro. Tente novamente.")
+                                }
                             }
 
-                            //Depositar
+                        //Depositar
                         } else if (op == 2) {
+                            /*É possível depositar na conta digital via boleto, porém
+                             não é especificado qual tipo de depósito*/
 
-                            println("Valor a depositar: ")
+                            print("Valor a depositar: ")
                             val valor: Double = readLine()!!.toDouble()
 
                             if (banco.depositar(nConta, valor)) {
@@ -119,12 +128,12 @@ fun main(args: Array<String>) {
                                 println("Erro. Tente Novamente\n")
                             }
 
-                            //Transferir
+                        //Transferir
                         } else if (op == 3) {
 
-                            println("Número da Conta a transferir: ")
+                            print("Número da Conta a transferir: ")
                             val nConta: Int = readLine()!!.toInt()
-                            println("Valor: ")
+                            print("Valor: ")
                             val valor: Double = readLine()!!.toDouble()
 
                             if (banco.transferir(banco.obterNumConta(), nConta, valor)) {
@@ -135,22 +144,22 @@ fun main(args: Array<String>) {
                                 println("Erro. Tente Novamente.")
                             }
 
+                        //Simular rendimento
                         }else if (op == 4){
-                            //Simular rendimento
                             println("Simulação de Rendimento:" +
                                     "\nSaldo depois do rendimento: " + banco.render())
 
+                        //Imprime informações da Conta
                         } else if (op == 5) {
-
                             println(banco.imprimeDados())
 
-                            //Sair
+                        //Sair
                         } else if (op == 6) {
 
                             banco.sair(nConta)
                             break
 
-                           //Ajuda
+                        //Ajuda
                         } else if(op == 0){
 
                             println(menu)
@@ -164,6 +173,8 @@ fun main(args: Array<String>) {
                     println("Número da Conta ou senha inválidos. Tente novamente.")
                 }
             }
+
+            //Apenas para conferência
             "4" -> {
                 val senhaInfo = "contas"
                 println("Senha: ")
@@ -173,18 +184,22 @@ fun main(args: Array<String>) {
                     println("Contas registradas: " + banco.contas.size)
                     println(banco.imprimeDadosArray())
                 }
-
             }
+
+            //Ajuda
             "h" ->{
                 println(menu)
             }
+
+            //Encerra o programa
             "0" -> {
+                println("Encerrado.")
                 break@loop
 
             }
             else -> {
 
-                println("Opção Inválida. Tente novamente")
+                println("Opção Inválida. Tente novamente.")
             }
         }
     }

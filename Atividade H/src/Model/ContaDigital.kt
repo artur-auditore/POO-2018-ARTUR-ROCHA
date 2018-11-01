@@ -2,7 +2,13 @@ package Model
 
 class ContaDigital: ContaCorrente() {
 
-    override fun saca(valor: Double): Boolean {
-        return false
+    fun calculoRendimento(): Double{
+        return this.saldo * 0.02
     }
+
+    override fun simularRendimento(): Double{
+        this.saldo += this.calculoRendimento()
+        return this.saldo
+    }
+
 }

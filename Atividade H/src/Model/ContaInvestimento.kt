@@ -9,7 +9,8 @@ class ContaInvestimento: ContaPoupança(){
     }
 
     override fun simularRendimento(): Double {
-        this.saldo += calculaRendimento() + investimento
-        return this.saldo
+        var saldoSimulado = this.saldo
+        saldoSimulado += calculaRendimento() + investimento
+        return saldoSimulado
     }
 }

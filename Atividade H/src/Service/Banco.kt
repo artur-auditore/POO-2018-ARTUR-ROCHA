@@ -45,12 +45,21 @@ class Banco{
                 conta.numeroConta = gerarNumeroDaConta()
                 contas.add(conta)
             }
+            5 ->{
+                val conta = ContaCapitalizacao()
+                conta.titular.nome = nomeTitular
+                conta.titular.cpf = cpfTitular
+                conta.senha = senha
+                conta.saldo = 0.0
+                conta.numeroConta = gerarNumeroDaConta()
+                contas.add(conta)
+            }
         }
     }
 
     fun depositar(numeroConta: Int, valor: Double): Boolean {
 
-        for (conta: Conta in contas){
+        for (conta in contas){
             if (conta.numeroConta == numeroConta){
                 return conta.deposita(valor)
             }
@@ -61,7 +70,7 @@ class Banco{
 
     fun sacar(senha: Int, valor: Double): Boolean{
 
-        for (conta: Conta in contas){
+        for (conta in contas){
             if (senha == conta.senha && valor > 0){
                 return conta.saca(valor)
             }
@@ -71,13 +80,13 @@ class Banco{
 
     fun transferir(nContaTransfere: Int, nContaRecebe: Int, valor: Double): Boolean {
 
-        for (conta: Conta in contas){
+        for (conta in contas){
             if (nContaTransfere == conta.numeroConta){
                 conta.saldo -= valor
             }
         }
 
-        for (conta: Conta in contas){
+        for (conta in contas){
             if (nContaRecebe == conta.numeroConta){
                return conta.deposita(valor)
             }
@@ -88,9 +97,11 @@ class Banco{
     fun render(): Double {
         for (conta in contas)
             if (conta.isLogada())
-                when (conta){
+                when (conta) {
                     is ContaPoupança -> return conta.simularRendimento()
                     is ContaInvestimento -> return conta.simularRendimento()
+                    is ContaDigital -> return conta.simularRendimento()
+                    is ContaCorrente -> return conta.simularRendimento()
                 }
         return 0.0
     }
@@ -114,7 +125,7 @@ class Banco{
 
     fun logarConta(numeroConta: Int, senha: Int): Boolean{
 
-        for (conta: Conta in contas){
+        for (conta in contas){
             if(conta.numeroConta == numeroConta && conta.senha == senha){
                 conta.logarConta()
                 return conta.isLogada()
@@ -125,7 +136,7 @@ class Banco{
 
     fun sair(numeroConta: Int): Boolean{
 
-        for (conta: Conta in contas){
+        for (conta in contas){
             if (numeroConta == conta.numeroConta){
                 return conta.logout()
             }
@@ -133,18 +144,44 @@ class Banco{
         return true
     }
 
-    fun imprimeDados(): String{
-        for (conta: Conta in contas){
-            if (conta.isLogada()){
-                return conta.dados()
+    fun typeBoolConta(): Boolean {
+        for (conta in contas)
+            if (conta is ContaDigital)
+                return true
+
+        return false
+    }
+
+    fun typeStringConta(): String {
+        for (conta in contas)
+            when(conta){
+                is ContaCorrente -> return "Conta corrente"
+                is ContaDigital -> return "Conta digital"
+                is ContaInvestimento -> return "Conta investimento"
+                is ContaPoupança -> return "Conta poupança"
+                is ContaCapitalizacao -> return "Conta capitalização"
             }
-        }
+        return ""
+    }
+
+    fun saldoDisponivel(senha: Int): String {
+        for (conta in contas)
+            if (senha == conta.senha)
+                "Saldo disponível: " + conta.saldo
+        return ""
+    }
+
+    fun imprimeDados(): String{
+        for (conta in contas)
+            if (conta.isLogada())
+                return conta.dados() + "\nTipo de Conta: " + this.typeStringConta()
+
         return ""
     }
 
     fun imprimeDadosArray(): String{
         var dados = ""
-        for (conta: Conta in contas){
+        for (conta in contas){
             dados += "Titular: " + conta.titular.nome
             dados += "\nCPF: " + conta.titular.cpf
             dados += "\nSenha: " + conta.senha
