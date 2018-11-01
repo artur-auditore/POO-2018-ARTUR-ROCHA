@@ -85,6 +85,16 @@ class Banco{
         return false
     }
 
+    fun render(): Double {
+        for (conta in contas)
+            if (conta.isLogada())
+                when (conta){
+                    is ContaPoupança -> return conta.simularRendimento()
+                    is ContaInvestimento -> return conta.simularRendimento()
+                }
+        return 0.0
+    }
+
     fun obterNumConta(): Int {
 
         return if (contas.size == 1){

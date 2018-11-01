@@ -36,7 +36,8 @@ fun main(args: Array<String>) {
                     println("Qual tipo de Conta deseja criar? " +
                             "\n1 - Conta Corrente" +
                             "\n2 - Conta Poupança" +
-                            "\n3 - Conta Digital")
+                            "\n3 - Conta Digital" +
+                            "\n4 - Conta Investimento")
 
                     val tipo = readLine()!!.toInt()
 
@@ -130,21 +131,31 @@ fun main(args: Array<String>) {
                                 println("Tranferência realizada com sucesso.")
 
                             } else {
+
                                 println("Erro. Tente Novamente.")
                             }
 
-                            //Mostrar Informações da Conta
+                        }else if (op == 4){
+                            //Simular rendimento
+                            println("Simulação de Rendimento:" +
+                                    "\nSaldo depois do rendimento: " + banco.render())
+
                         } else if (op == 5) {
+
                             println(banco.imprimeDados())
 
                             //Sair
                         } else if (op == 6) {
+
                             banco.sair(nConta)
                             break
+
                            //Ajuda
-                        }else if(op == 0){
+                        } else if(op == 0){
+
                             println(menu)
-                        }else{
+                        } else{
+
                             println("Opção inválida! Tente novamente.")
                         }
                     }

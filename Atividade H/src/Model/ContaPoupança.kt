@@ -2,7 +2,12 @@ package Model
 
 open class ContaPoupança: Conta(){
 
-    fun calculaRendimento(){
-        this.saldo = this.saldo + this.saldo * 0.05
+    open fun calculaRendimento(): Double {
+        return this.saldo * 0.05
+    }
+
+    open fun simularRendimento(): Double{
+        this.saldo += calculaRendimento()
+        return this.saldo
     }
 }
