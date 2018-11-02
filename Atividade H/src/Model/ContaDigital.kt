@@ -3,7 +3,7 @@ package Model
 class ContaDigital: ContaCorrente() {
 
     override fun calculaRendimento(): Double{
-        return this.saldo * 0.02
+        return this.saldo * 0.03
     }
 
     override fun simularRendimento(): Double{
