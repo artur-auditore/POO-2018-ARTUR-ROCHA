@@ -103,6 +103,7 @@ class Banco{
                     is ContaInvestimento -> return conta.simularRendimento()
                     is ContaDigital -> return conta.simularRendimento()
                     is ContaCorrente -> return conta.simularRendimento()
+                    is ContaCapitalizacao -> return conta.simularRendimento()
                 }
         return 0.0
     }
@@ -151,18 +152,6 @@ class Banco{
                 conta.depositoFixo = deposito
     }
 
-    fun typeConta(): Int{
-        for (conta in contas)
-            when (conta){
-                is ContaCorrente -> return 1
-                is ContaPoupança -> return 2
-                is ContaDigital -> return 3
-                is ContaInvestimento -> return 4
-                is ContaCapitalizacao -> return 5
-            }
-        return 0
-    }
-
     fun aplicaRendimento(): Double {
         for (conta in contas)
             if (conta.isLogada())
@@ -171,6 +160,7 @@ class Banco{
                     is ContaPoupança -> return conta.aplicaRendimento()
                     is ContaDigital -> return conta.aplicaRendimento()
                     is ContaInvestimento -> return conta.aplicaRendimento()
+                    is ContaCapitalizacao -> return conta.aplicaRendimento()
                 }
         return 0.0
     }

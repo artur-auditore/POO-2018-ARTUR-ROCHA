@@ -48,7 +48,7 @@ fun main(args: Array<String>) {
                     println("Conta criada com sucesso\n" +
                             "Numero de sua conta: " + banco.obterNumConta())
 
-                    if (banco.typeConta() == 5){ //se a conta for do tipo capitalização irá retornar um inteiro
+                    if (tipo == 5){ //se a conta for do tipo capitalização irá retornar um inteiro
 
                         println("Para este tipo de conta você precisa escolher um valor" +
                                 "\nfixo para depósito. Por favor, digite o valor:")
