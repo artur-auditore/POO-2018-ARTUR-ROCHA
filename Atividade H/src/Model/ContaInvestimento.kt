@@ -1,19 +1,19 @@
 package Model
 
-class ContaInvestimento: ContaPoupança(){
+class ContaInvestimento: Conta(){
 
-    var prazo = false
+    var prazoEstabelecido = false
 
     fun mudaPrazo(){
-        this.prazo = true
+        this.prazoEstabelecido = true
     }
 
-    fun chegouPrazo(): Boolean {
-        return this.prazo
+    fun isInPrazo(): Boolean {
+        return this.prazoEstabelecido
     }
 
     override fun saca(valor: Double): Boolean {
-        return if (chegouPrazo()){
+        return if (isInPrazo()){
             super.saca(valor)
         } else{
             val perda = this.calculaRendimento() * 0.2
@@ -23,17 +23,17 @@ class ContaInvestimento: ContaPoupança(){
 
     }
 
-    override fun calculaRendimento(): Double {
+    fun calculaRendimento(): Double {
         return this.saldo * 0.02
     }
 
-    override fun simularRendimento(): Double {
+    fun simularRendimento(): Double {
         var saldoSimulado = this.saldo
         saldoSimulado += calculaRendimento()
         return saldoSimulado
     }
 
-    override fun aplicaRendimento(): Double {
+    fun aplicaRendimento(): Double {
         this.saldo += calculaRendimento()
         return this.saldo
     }

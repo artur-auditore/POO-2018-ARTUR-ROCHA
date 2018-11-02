@@ -48,6 +48,16 @@ fun main(args: Array<String>) {
                     println("Conta criada com sucesso\n" +
                             "Numero de sua conta: " + banco.obterNumConta())
 
+                    if (banco.typeConta() == 5){ //se a conta for do tipo capitalização irá retornar um inteiro
+
+                        println("Para este tipo de conta você precisa escolher um valor" +
+                                "\nfixo para depósito. Por favor, digite o valor:")
+                        val depositoFixo = readLine()!!.toDouble()
+                        banco.setDeposito(depositoFixo)
+
+                        println("Você definiu o valor de depósito fixo para $depositoFixo reais.")
+                    }
+
                 } else {
                     println("Dados Inválidos. Tente Novamente.\n")
                 }
@@ -63,9 +73,9 @@ fun main(args: Array<String>) {
                 val valor: Double = readLine()!!.toDouble()
 
                 if (banco.depositar(nConta, valor)) {
-                    println("Depósito Realizado com sucesso.\n")
+                    println("Depósito Realizado com sucesso.")
                 } else {
-                    println("Erro. Tente Novamente\n")
+                    println("Não é possível depositar.")
                 }
             }
 
@@ -101,12 +111,12 @@ fun main(args: Array<String>) {
                             print("Senha: ")
                             val senhaConta: Int = readLine()!!.toInt()
 
-                            if (banco.sacar(senha, valor)) {
+                            if (banco.sacar(senhaConta, valor)) {
                                 println("Saque realizado com sucesso.")
-                                println(banco.saldoDisponivel(senhaConta))
+                                println(banco.saldoDisponivel())
 
                             } else {
-                                println("Erro. Tente novamente.")
+                                println("Erro. Não foi possível realizar o saque.")
                             }
 
                         //Depositar
@@ -118,9 +128,10 @@ fun main(args: Array<String>) {
                             val valor: Double = readLine()!!.toDouble()
 
                             if (banco.depositar(nConta, valor)) {
-                                println("Depósito Realizado com sucesso.\n")
+                                println("Depósito Realizado com sucesso.")
+                                println(banco.saldoDisponivel())
                             } else {
-                                println("Erro. Tente Novamente\n")
+                                println("Erro. Não foi possível depositar.")
                             }
 
                         //Transferir
@@ -133,10 +144,11 @@ fun main(args: Array<String>) {
 
                             if (banco.transferir(numeroConta, valor)) {
                                 println("Tranferência realizada com sucesso.")
+                                println(banco.saldoDisponivel())
 
                             } else {
 
-                                println("Erro. Tente Novamente.")
+                                println("Erro. Não foi possível realizar a transferência.")
                             }
 
                         //Simular rendimento

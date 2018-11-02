@@ -1,12 +1,12 @@
 package Model
 
-class ContaDigital: ContaCorrente() {
+class ContaDigital: Conta() {
 
-    override fun calculaRendimento(): Double{
+    fun calculaRendimento(): Double{
         return this.saldo * 0.03
     }
 
-    override fun simularRendimento(): Double{
+    fun simularRendimento(): Double{
         var saldoSimulado = this.saldo
         saldoSimulado += this.calculaRendimento()
         return saldoSimulado
@@ -20,7 +20,7 @@ class ContaDigital: ContaCorrente() {
         return false
     }
 
-    override fun aplicaRendimento(): Double {
+    fun aplicaRendimento(): Double {
         this.saldo += calculaRendimento()
         return this.saldo
     }

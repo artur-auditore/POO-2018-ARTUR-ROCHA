@@ -145,6 +145,24 @@ class Banco{
         return true
     }
 
+    fun setDeposito(deposito: Double){
+        for (conta in contas)
+            if (conta is ContaCapitalizacao)
+                conta.depositoFixo = deposito
+    }
+
+    fun typeConta(): Int{
+        for (conta in contas)
+            when (conta){
+                is ContaCorrente -> return 1
+                is ContaPoupança -> return 2
+                is ContaDigital -> return 3
+                is ContaInvestimento -> return 4
+                is ContaCapitalizacao -> return 5
+            }
+        return 0
+    }
+
     fun aplicaRendimento(): Double {
         for (conta in contas)
             if (conta.isLogada())
@@ -170,9 +188,9 @@ class Banco{
         return ""
     }
 
-    fun saldoDisponivel(senha: Int): String {
+    fun saldoDisponivel(): String {
         for (conta in contas)
-            if (senha == conta.senha)
+            if (conta.isLogada())
                 "Saldo disponível: " + conta.saldo
         return ""
     }
