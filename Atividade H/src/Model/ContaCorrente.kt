@@ -9,7 +9,7 @@ open class ContaCorrente: Conta(){
 
     }
 
-    fun calculaRendimento(): Double{
+    open fun calculaRendimento(): Double{
         return this.saldo * 0.005
     }
 

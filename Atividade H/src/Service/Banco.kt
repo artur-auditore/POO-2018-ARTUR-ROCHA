@@ -78,17 +78,18 @@ class Banco{
         return false
     }
 
-    fun transferir(nContaTransfere: Int, nContaRecebe: Int, valor: Double): Boolean {
+    fun transferir(nContaRecebe: Int, valor: Double): Boolean {
 
         for (conta in contas){
-            if (nContaTransfere == conta.numeroConta){
+            if (conta.isLogada()){
                 conta.saldo -= valor
             }
         }
 
         for (conta in contas){
             if (nContaRecebe == conta.numeroConta){
-               return conta.deposita(valor)
+               conta.saldo += valor
+                return true
             }
         }
         return false
@@ -117,7 +118,7 @@ class Banco{
 
     }
 
-    fun gerarNumeroDaConta(): Int {
+    private fun gerarNumeroDaConta(): Int {
 
         val random = Random()
         return random.nextInt(9999 - 1111)
@@ -144,22 +145,17 @@ class Banco{
         return true
     }
 
-    fun typeBoolConta(): Boolean {
-        for (conta in contas)
-            if (conta is ContaDigital)
-                return true
 
-        return false
-    }
 
     fun typeStringConta(): String {
         for (conta in contas)
-            when(conta){
-                is ContaCorrente -> return "Conta corrente"
-                is ContaDigital -> return "Conta digital"
-                is ContaInvestimento -> return "Conta investimento"
-                is ContaPoupança -> return "Conta poupança"
-                is ContaCapitalizacao -> return "Conta capitalização"
+            if (conta.isLogada())
+                when(conta){
+                    is ContaCorrente -> return "Conta corrente"
+                    is ContaPoupança -> return "Conta poupança"
+                    is ContaDigital -> return "Conta digital"
+                    is ContaInvestimento -> return "Conta investimento"
+                    is ContaCapitalizacao -> return "Conta capitalização"
             }
         return ""
     }
@@ -174,7 +170,7 @@ class Banco{
     fun imprimeDados(): String{
         for (conta in contas)
             if (conta.isLogada())
-                return conta.dados() + "\nTipo de Conta: " + this.typeStringConta()
+                return conta.dados() + "\nTipo de Conta: " + typeStringConta()
 
         return ""
     }

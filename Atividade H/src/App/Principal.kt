@@ -1,13 +1,12 @@
 package App
 
 import Service.Banco
-import Model.Conta
 
 fun main(args: Array<String>) {
     val banco = Banco()
     banco.nome = "Nubank"
 
-    val menu = "******** " + banco.nome + " ********" +
+    val menuPrincipal = "******** " + banco.nome + " ********" +
             "\nPara obter ajuda presione h" +
             "\n1 - Abrir Conta" +
             "\n2 - Depositar via Envelope" +
@@ -15,7 +14,7 @@ fun main(args: Array<String>) {
             "\n4 - Infomações de todas as contas" +
             "\n0 - Fechar\n"
 
-    println(menu)
+    println(menuPrincipal)
 
     loop@ while (true) {
         print("Opção: ")
@@ -92,30 +91,26 @@ fun main(args: Array<String>) {
                     println(menu)
                     while (true) {
                         print("Opção: ")
-                        val op: Int = readLine()!!.toInt()
+                        val opc: Int = readLine()!!.toInt()
 
                         //Sacar
-                        if (op == 1) {
-                            if (banco.typeBoolConta()){
-                                println("Conta digital. Impossível sacar.")
+                        if (opc == 1) {
+
+                            print("Valor a sacar: ")
+                            val valor: Double = readLine()!!.toDouble()
+                            print("Senha: ")
+                            val senhaConta: Int = readLine()!!.toInt()
+
+                            if (banco.sacar(senha, valor)) {
+                                println("Saque realizado com sucesso.")
+                                println(banco.saldoDisponivel(senhaConta))
+
                             } else {
-
-                                print("Valor a sacar: ")
-                                val valor: Double = readLine()!!.toDouble()
-                                print("Senha: ")
-                                val senha: Int = readLine()!!.toInt()
-
-                                if (banco.sacar(senha, valor)) {
-                                    println("Saque realizado com sucesso.")
-                                    println(banco.saldoDisponivel(senha))
-
-                                } else {
-                                    println("Erro. Tente novamente.")
-                                }
+                                println("Erro. Tente novamente.")
                             }
 
                         //Depositar
-                        } else if (op == 2) {
+                        } else if (opc == 2) {
                             /*É possível depositar na conta digital via boleto, porém
                              não é especificado qual tipo de depósito*/
 
@@ -129,14 +124,14 @@ fun main(args: Array<String>) {
                             }
 
                         //Transferir
-                        } else if (op == 3) {
+                        } else if (opc == 3) {
 
                             print("Número da Conta a transferir: ")
-                            val nConta: Int = readLine()!!.toInt()
+                            val numeroConta: Int = readLine()!!.toInt()
                             print("Valor: ")
                             val valor: Double = readLine()!!.toDouble()
 
-                            if (banco.transferir(banco.obterNumConta(), nConta, valor)) {
+                            if (banco.transferir(numeroConta, valor)) {
                                 println("Tranferência realizada com sucesso.")
 
                             } else {
@@ -145,22 +140,23 @@ fun main(args: Array<String>) {
                             }
 
                         //Simular rendimento
-                        }else if (op == 4){
+                        }else if (opc == 4){
                             println("Simulação de Rendimento:" +
                                     "\nSaldo depois do rendimento: " + banco.render())
 
                         //Imprime informações da Conta
-                        } else if (op == 5) {
+                        } else if (opc == 5) {
                             println(banco.imprimeDados())
 
                         //Sair
-                        } else if (op == 6) {
+                        } else if (opc == 6) {
 
                             banco.sair(nConta)
+                            println(menuPrincipal)
                             break
 
                         //Ajuda
-                        } else if(op == 0){
+                        } else if(opc == 0){
 
                             println(menu)
                         } else{
@@ -188,7 +184,7 @@ fun main(args: Array<String>) {
 
             //Ajuda
             "h" ->{
-                println(menu)
+                println(menuPrincipal)
             }
 
             //Encerra o programa
