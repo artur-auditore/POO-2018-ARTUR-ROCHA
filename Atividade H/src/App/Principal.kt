@@ -141,8 +141,17 @@ fun main(args: Array<String>) {
 
                         //Simular rendimento
                         }else if (opc == 4){
+
                             println("Simulação de Rendimento:" +
                                     "\nSaldo depois do rendimento: " + banco.render())
+
+                            /*Aplica o rendimento
+                             (é como se tivesse passado o tempo necessário para o saldo render)*/
+                            println("Deseja aplicar o rendimento? (y/n)")
+                            val aplica = readLine()!!.toString()
+                            if (aplica == "y"){
+                                println("Saldo atual: " + banco.aplicaRendimento())
+                            }
 
                         //Imprime informações da Conta
                         } else if (opc == 5) {
@@ -166,6 +175,7 @@ fun main(args: Array<String>) {
                     }
 
                 } else {
+
                     println("Número da Conta ou senha inválidos. Tente novamente.")
                 }
             }

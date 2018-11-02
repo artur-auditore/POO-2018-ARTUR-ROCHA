@@ -13,4 +13,9 @@ class ContaInvestimento: ContaPoupança(){
         saldoSimulado += calculaRendimento() + investimento
         return saldoSimulado
     }
+
+    override fun aplicaRendimento(): Double {
+        this.saldo += calculaRendimento()
+        return this.saldo
+    }
 }

@@ -20,4 +20,9 @@ open class ContaCorrente: Conta(){
         return saldoSimulado
     }
 
+    open fun aplicaRendimento(): Double{
+        this.saldo += this.calculaRendimento()
+        return this.saldo
+    }
+
 }

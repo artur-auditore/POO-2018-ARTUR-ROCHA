@@ -145,7 +145,17 @@ class Banco{
         return true
     }
 
-
+    fun aplicaRendimento(): Double {
+        for (conta in contas)
+            if (conta.isLogada())
+                when(conta){
+                    is ContaCorrente -> return conta.aplicaRendimento()
+                    is ContaPoupança -> return conta.aplicaRendimento()
+                    is ContaDigital -> return conta.aplicaRendimento()
+                    is ContaInvestimento -> return conta.aplicaRendimento()
+                }
+        return 0.0
+    }
 
     fun typeStringConta(): String {
         for (conta in contas)

@@ -11,4 +11,9 @@ open class ContaPoupança: Conta(){
         saldoSimulado += this.calculaRendimento()
         return saldoSimulado
     }
+
+    open fun aplicaRendimento(): Double{
+        this.saldo += calculaRendimento()
+        return this.saldo
+    }
 }

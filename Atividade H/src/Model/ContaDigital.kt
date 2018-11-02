@@ -7,8 +7,9 @@ class ContaDigital: ContaCorrente() {
     }
 
     override fun simularRendimento(): Double{
-        this.saldo += this.calculaRendimento()
-        return this.saldo
+        var saldoSimulado = this.saldo
+        saldoSimulado += this.calculaRendimento()
+        return saldoSimulado
     }
 
     override fun deposita(valor: Double): Boolean {
@@ -17,6 +18,11 @@ class ContaDigital: ContaCorrente() {
 
     override fun saca(valor: Double): Boolean {
         return false
+    }
+
+    override fun aplicaRendimento(): Double {
+        this.saldo += calculaRendimento()
+        return this.saldo
     }
 
 }
