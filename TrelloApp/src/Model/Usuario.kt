@@ -57,4 +57,9 @@ class Usuario(var nome: String,
 
         return ""
     }
+
+    fun novoCartao(titulo: String, descricao: String){
+        for (quadro in this.quadros) if (quadro.isOpen())
+            quadro.novoCartao(titulo, descricao)
+    }
 }

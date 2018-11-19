@@ -35,7 +35,9 @@ class Quadro (var nome: String){
     }
 
     fun novoCartao(titulo: String, descricao: String){
-        
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.novoCartao(titulo, descricao)
+        }
     }
 
 }

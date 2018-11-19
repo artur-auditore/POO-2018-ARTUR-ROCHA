@@ -67,4 +67,10 @@ class Trello{
 
         return ""
     }
+
+    fun novoCartao(titulo: String, descricao: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.novoCartao(titulo, descricao)
+        }
+    }
 }

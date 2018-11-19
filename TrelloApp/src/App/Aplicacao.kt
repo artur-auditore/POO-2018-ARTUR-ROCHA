@@ -124,6 +124,16 @@ fun main(args: Array<String>) {
                                                     //Novo cartão
                                                     "1" ->{
 
+                                                        println("Título: ")
+                                                        val tituloCartao = readLine()!!.toString()
+                                                        println("Descrição")
+                                                        val descCartao = readLine()!!.toString()
+                                                        if (tituloCartao.trim() == ""){
+                                                            println("Forneça um título inválido")
+                                                        } else {
+                                                            trello.novoCartao(tituloCartao, descCartao)
+                                                        }
+
                                                     }
 
                                                     "0" -> break@loop3
