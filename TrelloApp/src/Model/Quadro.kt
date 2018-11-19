@@ -34,4 +34,8 @@ class Quadro (var nome: String){
         return dados
     }
 
+    fun novoCartao(titulo: String, descricao: String){
+        
+    }
+
 }

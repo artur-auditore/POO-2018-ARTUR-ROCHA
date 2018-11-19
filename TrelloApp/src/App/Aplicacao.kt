@@ -107,7 +107,30 @@ fun main(args: Array<String>) {
                                             println("Lista aberta.")
 
                                             val menuCartao = "1. Novo cartão" +
-                                                    "\n2. Abrir cartão"
+                                                    "\n2. Abrir cartão" +
+                                                    "\n3. Mover" +
+                                                    "\n4. Copiar" +
+                                                    "\n5. Arquvar" +
+                                                    "\n0. Sair" +
+                                                    "\nPara obter ajuda pressione h"
+
+                                            println(menuCartao)
+                                            loop3@ while (true){
+                                                print("Opção: ")
+                                                val opcaoCartao = readLine()!!.toString()
+
+                                                when(opcaoCartao){
+
+                                                    //Novo cartão
+                                                    "1" ->{
+
+                                                    }
+
+                                                    "0" -> break@loop3
+                                                    "h" -> println(menuCartao)
+                                                    else -> println("Opção inválida.")
+                                                }
+                                            }
 
                                         }
 
@@ -119,18 +142,7 @@ fun main(args: Array<String>) {
 
 
                                 }
-//                                println("Título:")
-//                                val titulo = readLine()!!.toString()
-//                                println("Para qual quadro deseja adicionar?")
-//                                println(trello.verQuadros())
-//                                val tituloQuadro = readLine()!!.toString()
-//
-//                                if (titulo.trim() == ""){
-//                                    println("Título inválido. Tente novamente.")
-//                                } else{
-//                                    trello.novaLista(titulo, tituloQuadro)
-//                                    println("$titulo criada.")
-//                                }
+
                             }
                             //Novo Cartão
                             "4" ->{
