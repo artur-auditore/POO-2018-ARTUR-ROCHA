@@ -32,12 +32,9 @@ fun main(args: Array<String>) {
 
                     val menuUsuario = "1. Novo quadro" +
                             "\n2. Ver quadros" +
-                            "\n3. Nova Lista" +
-                            "\n4. Novo Cartão" +
-                            "\n5. Abrir Cartão" +
-                            "\n6. Cartões" +
+                            "\n3. Abrir quadro" +
                             "\n0. Sair" +
-                            "Para obter ajuda pressione h"
+                            "\nPara obter ajuda pressione h"
 
                     println(menuUsuario)
                     loop1@ while (true){
@@ -61,23 +58,83 @@ fun main(args: Array<String>) {
                             }
                             //Listagem por nome dos quadros
                             "2" ->{
-                                
+
                                 println(trello.verQuadros())
                             }
-                            //Nova Lista
+                            //Abrir quadro
                             "3" ->{
-
-                                println("Título:")
-                                val titulo = readLine()!!.toString()
-                                println("Para qual quadro deseja adicionar?")
+                                println("Qual quadro deseja abrir?")
                                 println(trello.verQuadros())
-                                val tituloQuadro = readLine()!!.toString()
+                                val nomeQuadro = readLine()!!.toString()
 
-                                if (titulo.trim() == ""){
-                                    println("Título inválido. Tente novamente.")
-                                } else{
-                                    trello.novaLista(titulo, tituloQuadro)
+                                trello.abrirQuadro(nomeQuadro)
+                                println("Quadro aberto.")
+
+                                val menuQuadro = "1. Adicionar Lista" +
+                                        "\n2. Abrir Lista" +
+                                        "\n3. Ver Listas" +
+                                        "\n4. Copiar Lista" +
+                                        "\n5. Mover Lista" +
+                                        "\n6. Arquivar" +
+                                        "\n0. Voltar" +
+                                        "\nPara obter ajuda pressione h"
+
+                                println(menuQuadro)
+                                loop2@ while (true){
+                                    print("Opção:")
+                                    val opcaoQuadro = readLine()!!.toString()
+                                    when(opcaoQuadro){
+
+                                        //Adicionar Lista
+                                        "1" ->{
+                                            println("Título:")
+                                            val titulo = readLine()!!.toString()
+
+                                            if (titulo.trim() == ""){
+                                                println("Título inválido. Tente novamente.")
+                                            } else{
+                                                trello.novaLista(titulo)
+                                                println("$titulo criada.")
+                                            }
+                                        }
+                                        //Abrir Lista
+                                        "2" ->{
+                                            println("Qual lista deseja abrir?")
+                                            println(trello.verListas())
+                                            val nomeLista = readLine()!!.toString()
+
+                                            trello.abrirLista(nomeLista)
+                                            println("Lista aberta.")
+
+                                            val menuCartao = "1. Novo cartão" +
+                                                    "\n2. Abrir cartão"
+
+                                        }
+
+                                        "0" -> break@loop2
+                                        "h" -> println(menuQuadro)
+                                        else -> println("Opção inválida.")
+
+                                    }
+
+
                                 }
+//                                println("Título:")
+//                                val titulo = readLine()!!.toString()
+//                                println("Para qual quadro deseja adicionar?")
+//                                println(trello.verQuadros())
+//                                val tituloQuadro = readLine()!!.toString()
+//
+//                                if (titulo.trim() == ""){
+//                                    println("Título inválido. Tente novamente.")
+//                                } else{
+//                                    trello.novaLista(titulo, tituloQuadro)
+//                                    println("$titulo criada.")
+//                                }
+                            }
+                            //Novo Cartão
+                            "4" ->{
+
                             }
                             //Cartões(???)
                             "6" ->{

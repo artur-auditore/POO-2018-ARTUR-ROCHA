@@ -28,13 +28,33 @@ class Usuario(var nome: String,
         this.quadros.add(quadro)
     }
 
-    fun verQuadros():String{
-        for (quadro in this.quadros) return "${quadro.nome}\n"
-        return ""
+    fun abrirQuadro(titulo: String){
+        for (quadro in this.quadros) if (quadro.nome == titulo){
+            quadro.abrirQuadro()
+        }
     }
 
-    fun novaLista(titulo: String, tituloQuadro: String){
-        for (quadro in this.quadros) if (quadro.nome == tituloQuadro)
+    fun verQuadros():String{
+        var dados = ""
+        for (quadro in this.quadros) dados += "${quadro.nome}\n"
+        return dados
+    }
+
+    fun novaLista(titulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen())
             quadro.novaLista(titulo)
+    }
+
+    fun abrirLista(titulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.abrirLista(titulo)
+        }
+    }
+
+    fun verListas(): String{
+        for (quadro in this.quadros) if (quadro.isOpen())
+            return quadro.verListas()
+
+        return ""
     }
 }

@@ -35,6 +35,12 @@ class Trello{
         }
     }
 
+    fun abrirQuadro(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.abrirQuadro(titulo)
+        }
+    }
+
     fun verQuadros(): String{
         for (usuario in usuarios) if (usuario.isLogged())
             return usuario.verQuadros()
@@ -42,9 +48,23 @@ class Trello{
         return ""
     }
 
-    fun novaLista(titulo: String, tituloQuadro: String){
+    fun novaLista(titulo: String){
         for (usuario in usuarios) if (usuario.isLogged()){
-            usuario.novaLista(titulo, tituloQuadro)
+            usuario.novaLista(titulo)
         }
+    }
+
+    fun abrirLista(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.abrirLista(titulo)
+        }
+    }
+
+    fun verListas(): String{
+        for (usuario in usuarios) if (usuario.isLogged()){
+            return usuario.verListas()
+        }
+
+        return ""
     }
 }
