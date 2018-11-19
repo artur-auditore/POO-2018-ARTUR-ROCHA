@@ -7,6 +7,7 @@ class Usuario{
     lateinit var senha: String
     lateinit var username: String
     var logado = false
+    var quadros = arrayListOf<Quadro>()
 
     fun logar(): Boolean {
         this.logado = true
@@ -19,5 +20,10 @@ class Usuario{
 
     fun isLogged(): Boolean{
         return this.logado
+    }
+
+    fun novoQuadro(titulo: String){
+        val quadro = Quadro(titulo)
+        quadros.add(quadro)
     }
 }

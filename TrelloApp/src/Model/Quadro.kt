@@ -1,11 +1,11 @@
 package Model
 
-class Quadro {
+class Quadro (var nome: String){
 
-    lateinit var nome: String
     var listas = arrayListOf<Lista>()
 
     fun novaLista(nome: String){
         val lista = Lista(nome)
+        listas.add(lista)
     }
 }

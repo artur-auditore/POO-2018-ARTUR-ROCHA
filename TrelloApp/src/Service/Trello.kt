@@ -7,7 +7,7 @@ import java.lang.StringBuilder
 class Trello{
 
     var usuarios = arrayListOf<Usuario>()
-    var quadros = arrayListOf<Quadro>()
+
 
     fun novoCadastro(nome: String, email: String, senha: String){
         val usuario = Usuario()
@@ -19,8 +19,10 @@ class Trello{
         usuarios.add(usuario)
     }
 
-    fun logar(email: String, senha: String): Boolean {
-        for (usuario in usuarios) if (usuario.email == email && usuario.senha == senha)
+    fun logar(emailOrUsername: String, senha: String): Boolean {
+        for (usuario in usuarios)
+            if (usuario.email == emailOrUsername ||
+                usuario.username == emailOrUsername && usuario.senha == senha)
             return usuario.logar()
 
         return false
@@ -31,4 +33,9 @@ class Trello{
         return username.toString()
     }
 
+    fun novoQuadro(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.novoQuadro(titulo)
+        }
+    }
 }
