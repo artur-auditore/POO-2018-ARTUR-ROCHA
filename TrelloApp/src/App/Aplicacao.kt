@@ -1,11 +1,13 @@
 package App
 
 import Service.Trello
+import org.omg.CORBA.portable.InputStream
+import java.io.File
+import java.io.FileInputStream
 
 fun main(args: Array<String>) {
 
     val trello = Trello()
-
     val menuLogin = "**** Trello App ****" +
             "\n1. Login" +
             "\n2. Cadastre-se" +
@@ -30,7 +32,10 @@ fun main(args: Array<String>) {
 
                     val menuUsuario = "1. Novo quadro" +
                             "\n2. Ver quadros" +
-                            "\n3. Cartões" +
+                            "\n3. Nova Lista" +
+                            "\n4. Novo Cartão" +
+                            "\n5. Abrir Cartão" +
+                            "\n6. Cartões" +
                             "\n0. Sair" +
                             "Para obter ajuda pressione h"
 
@@ -56,10 +61,26 @@ fun main(args: Array<String>) {
                             }
                             //Listagem por nome dos quadros
                             "2" ->{
+                                
+                                println(trello.verQuadros())
+                            }
+                            //Nova Lista
+                            "3" ->{
 
+                                println("Título:")
+                                val titulo = readLine()!!.toString()
+                                println("Para qual quadro deseja adicionar?")
+                                println(trello.verQuadros())
+                                val tituloQuadro = readLine()!!.toString()
+
+                                if (titulo.trim() == ""){
+                                    println("Título inválido. Tente novamente.")
+                                } else{
+                                    trello.novaLista(titulo, tituloQuadro)
+                                }
                             }
                             //Cartões(???)
-                            "3" ->{
+                            "6" ->{
 
                             }
                             "h" -> println(menuUsuario)

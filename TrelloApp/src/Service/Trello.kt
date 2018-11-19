@@ -1,6 +1,5 @@
 package Service
 
-import Model.Quadro
 import Model.Usuario
 import java.lang.StringBuilder
 
@@ -10,10 +9,7 @@ class Trello{
 
 
     fun novoCadastro(nome: String, email: String, senha: String){
-        val usuario = Usuario()
-        usuario.nome = nome
-        usuario.email = email
-        usuario.senha = senha
+        val usuario = Usuario(nome, email, senha)
         usuario.username = gerarUsername(nome)
 
         usuarios.add(usuario)
@@ -36,6 +32,19 @@ class Trello{
     fun novoQuadro(titulo: String){
         for (usuario in usuarios) if (usuario.isLogged()){
             usuario.novoQuadro(titulo)
+        }
+    }
+
+    fun verQuadros(): String{
+        for (usuario in usuarios) if (usuario.isLogged())
+            return usuario.verQuadros()
+
+        return ""
+    }
+
+    fun novaLista(titulo: String, tituloQuadro: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.novaLista(titulo, tituloQuadro)
         }
     }
 }

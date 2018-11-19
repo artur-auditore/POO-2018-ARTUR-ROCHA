@@ -1,8 +1,7 @@
 package Model
 
-class Cartao {
+class Cartao(var titulo: String) {
 
-    lateinit var titulo: String
     lateinit var descricao: String
     var etiquetas = arrayListOf<Etiqueta>()
     var comentarios = arrayListOf<Comentario>()
