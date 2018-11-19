@@ -2,6 +2,7 @@ package Service
 
 import Model.Quadro
 import Model.Usuario
+import java.lang.StringBuilder
 
 class Trello{
 
@@ -13,6 +14,7 @@ class Trello{
         usuario.nome = nome
         usuario.email = email
         usuario.senha = senha
+        usuario.username = gerarUsername(nome)
 
         usuarios.add(usuario)
     }
@@ -22,6 +24,11 @@ class Trello{
             return usuario.logar()
 
         return false
+    }
+
+    fun gerarUsername(nome: String): String{
+        val username = StringBuilder(); username.append(nome.toLowerCase()+"12")
+        return username.toString()
     }
 
 }

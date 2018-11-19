@@ -5,7 +5,7 @@ class Usuario{
     lateinit var nome: String
     lateinit var email: String
     lateinit var senha: String
-    lateinit var nomeUsuario: String
+    lateinit var username: String
     var logado = false
 
     fun logar(): Boolean {
