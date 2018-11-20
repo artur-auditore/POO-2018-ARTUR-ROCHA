@@ -34,6 +34,12 @@ class Usuario(var nome: String,
         }
     }
 
+    fun arquivar(titulo: String){
+        for (quadro in this.quadros) if (quadro.nome == titulo){
+            quadro.arquivado = true
+        }
+    }
+
     fun verQuadros():String{
         var dados = ""
         for (quadro in this.quadros) dados += "${quadro.nome}\n"
@@ -61,7 +67,15 @@ class Usuario(var nome: String,
         for (quadro in this.quadros) if (quadro.isOpen())
             return quadro.verListas()
 
-        return ""
+        return "Não há listas."
+    }
+
+    fun verListas(titulo: String): String{
+        for (quadro in this.quadros) if (quadro.nome == titulo){
+            return quadro.verListas()
+        }
+
+        return "Não há listas."
     }
 
     fun copiarLista(titulo: String){
@@ -96,12 +110,8 @@ class Usuario(var nome: String,
     }
 
     fun copiarCartao(titulo: String, nomeLista: String, nomeQuadro: String){
-        val cartaoCopiado = Cartao(titulo)
-
         for (quadro in this.quadros) if (quadro.nome == nomeQuadro){
-            for (lista in quadro.listas) if (lista.nome == nomeLista){
-                lista.cartoes.add(cartaoCopiado)
-            }
+            quadro.copiarCartao(titulo, nomeLista)
         }
     }
 

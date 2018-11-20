@@ -69,6 +69,14 @@ class Trello {
         return ""
     }
 
+    fun verListas(titulo: String): String {
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            return usuario.verListas(titulo)
+        }
+
+        return ""
+    }
+
     fun novoCartao(titulo: String, descricao: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.novoCartao(titulo, descricao)
@@ -116,6 +124,12 @@ class Trello {
     fun fecharLista() {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.fecharLista()
+        }
+    }
+
+    fun logout() {
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.logout()
         }
     }
 }

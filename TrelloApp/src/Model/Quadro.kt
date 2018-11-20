@@ -4,6 +4,7 @@ class Quadro (var nome: String){
 
     var listas = arrayListOf<Lista>()
     var aberto = false
+    var arquivado = false
 
     fun abrirQuadro(){
         this.aberto = true
@@ -60,11 +61,11 @@ class Quadro (var nome: String){
     }
 
     fun copiarCartao(titulo: String, nomeLista: String){
-        val cartaoCopiado = Cartao(titulo)
 
         for (lista in this.listas) if (lista.nome == nomeLista){
-            for (cartao in lista.cartoes) lista.cartoes.add(cartaoCopiado)
+            lista.copiarCartao(titulo)
         }
+
     }
 
     fun copiarLista(titulo: String){

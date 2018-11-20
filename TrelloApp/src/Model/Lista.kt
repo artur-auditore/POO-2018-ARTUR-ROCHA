@@ -30,10 +30,12 @@ class Lista(var nome: String){
     }
 
     fun copiarCartao(titulo: String){
-        val cartaoCopiado = Cartao(titulo)
+        var cartaoCopiado = Cartao(titulo)
 
         for (cartao in this.cartoes) if (cartao.titulo == titulo){
-            this.cartoes.add(cartaoCopiado)
+            cartaoCopiado = cartao
         }
+
+        this.cartoes.add(cartaoCopiado)
     }
 }

@@ -27,13 +27,15 @@ fun main(args: Array<String>) {
                 if (trello.logar(emailOrUsername, senha)){
                     println("Bem vindo!")
 
-                    val menuUsuario = "1. Novo quadro" +
+                    val primeroMenu = "1. Novo quadro" +
                             "\n2. Ver quadros" +
                             "\n3. Abrir quadro" +
+                            "\n4. Arquivar" +
+                            "\n5. Ver quadros arquivados" +
                             "\n0. Sair" +
                             "\nPara obter ajuda pressione h"
 
-                    println(menuUsuario)
+                    println(primeroMenu)
                     loop1@ while (true){
                         print("Opção: ")
                         val opcaoUsuario = readLine()!!.toString()
@@ -67,7 +69,7 @@ fun main(args: Array<String>) {
                                 trello.abrirQuadro(nomeQuadro)
                                 println("Quadro aberto.")
 
-                                val menuQuadro = "1. Adicionar Lista" +
+                                val segundoMenu = "1. Adicionar Lista" +
                                         "\n2. Abrir Lista" +
                                         "\n3. Ver Listas" +
                                         "\n4. Copiar Lista" +
@@ -76,7 +78,7 @@ fun main(args: Array<String>) {
                                         "\n0. Voltar" +
                                         "\nPara obter ajuda pressione h"
 
-                                println(menuQuadro)
+                                println(segundoMenu)
                                 loop2@ while (true){
                                     print("Opção: ")
                                     val opcaoQuadro = readLine()!!.toString()
@@ -105,7 +107,7 @@ fun main(args: Array<String>) {
                                             trello.abrirLista(nomeLista)
                                             println("Lista aberta.")
 
-                                            val menuCartao = "1. Novo cartão" +
+                                            val terceiroMenu = "1. Novo cartão" +
                                                     "\n2. Abrir cartão" +
                                                     "\n3. Mover" +
                                                     "\n4. Copiar" +
@@ -114,7 +116,7 @@ fun main(args: Array<String>) {
                                                     "\n0. Sair" +
                                                     "\nPara obter ajuda pressione h"
 
-                                            println(menuCartao)
+                                            println(terceiroMenu)
                                             loop3@ while (true){
                                                 print("Opção: ")
                                                 val opcaoCartao = readLine()!!.toString()
@@ -149,15 +151,15 @@ fun main(args: Array<String>) {
                                                     //Copiar cartão
                                                     "4" ->{
 
-                                                        println("Título:")
-                                                        val tituloCartao = readLine()!!.toString()
+                                                        println("Escolha um cartão:")
                                                         println(trello.verCartoes())
+                                                        val tituloCartao = readLine()!!.toString()
                                                         if (tituloCartao.trim() == "") {
-                                                            println("Forneça um título inválido")
+                                                            println("Forneça um título válido.")
                                                         } else {
                                                             println("Para onde deseja copiar $tituloCartao?" +
-                                                                    "\n1. Mesma lista   " +
-                                                                    "\n2. Outra lista " +
+                                                                    "\n1. Mesma lista" +
+                                                                    "\n2. Outra lista" +
                                                                     "\n3. Outro lista de outro quadro")
 
                                                             val opcaoCopiar = readLine()!!.toString()
@@ -185,13 +187,15 @@ fun main(args: Array<String>) {
                                                                     println(trello.verQuadros())
                                                                     val tituloQuadro = readLine()!!.toString()
                                                                     println("Escolha a lista de destino:")
-                                                                    println(trello.verListas())
+                                                                    println(trello.verListas(tituloQuadro))
                                                                     val tituloLista = readLine()!!.toString()
 
                                                                     trello.copiarCartao(tituloCartao, tituloLista,
                                                                         tituloQuadro)
                                                                     println("$tituloCartao copiado.")
                                                                 }
+
+                                                                else -> println("Opção inválida.")
                                                             }
                                                         }
                                                     }
@@ -207,11 +211,11 @@ fun main(args: Array<String>) {
                                                     }
 
                                                     "0" -> {
-                                                        println(menuQuadro)
+                                                        println(segundoMenu)
                                                         break@loop3
                                                     }
 
-                                                    "h" -> println(menuCartao)
+                                                    "h" -> println(terceiroMenu)
 
                                                     else -> println("Opção inválida.")
                                                 }
@@ -247,12 +251,12 @@ fun main(args: Array<String>) {
 
                                         }
                                         "0" -> {
-                                            println(menuQuadro)
-                                            trello.fecharLista()
+                                            trello.fecharQuadro()
+                                            println(primeroMenu)
                                             break@loop2
                                         }
 
-                                        "h" -> println(menuQuadro)
+                                        "h" -> println(segundoMenu)
 
                                         else -> println("Opção inválida.")
 
@@ -263,11 +267,11 @@ fun main(args: Array<String>) {
                             "4" ->{
 
                             }
-                            "h" -> println(menuUsuario)
+                            "h" -> println(primeroMenu)
 
                             "0" -> {
-                                println()
-                                trello.fecharQuadro()
+                                println(menuLogin)
+                                trello.logout()
                                 break@loop1
                             }
 
