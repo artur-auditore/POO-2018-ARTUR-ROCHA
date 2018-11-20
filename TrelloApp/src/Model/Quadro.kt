@@ -35,7 +35,9 @@ class Quadro (var nome: String){
 
     fun verListas():String{
         var dados = ""
-        for (lista in this.listas) dados += "${lista.nome}\n"
+        for (lista in this.listas) if (!lista.estaArquivada()){
+            dados += "${lista.nome}\n"
+        }
         return dados
     }
 
@@ -43,6 +45,20 @@ class Quadro (var nome: String){
         for (lista in this.listas) if (lista.isOpen()){
             lista.fecharLista()
         }
+    }
+
+    fun arquivarLista(titulo: String){
+        for (lista in this.listas) if (lista.nome == titulo){
+            lista.arquivada = true
+        }
+    }
+
+    fun verListasArquivadas(): String {
+        var dados = ""
+        for (lista in this.listas) if (lista.estaArquivada()){
+            dados += "${lista.nome}\n"
+        }
+        return dados
     }
 
     fun novoCartao(titulo: String, descricao: String){

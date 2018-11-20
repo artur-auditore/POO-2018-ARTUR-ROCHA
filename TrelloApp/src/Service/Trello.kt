@@ -1,13 +1,13 @@
 package Service
 
-import Model.Cartao
 import Model.Usuario
 import java.lang.StringBuilder
 
 class Trello {
 
-    var usuarios = arrayListOf<Usuario>()
+    private var usuarios = arrayListOf<Usuario>()
 
+    //Metodos para criação e login de usuário
 
     fun novoCadastro(nome: String, email: String, senha: String) {
         val usuario = Usuario(nome, email, senha)
@@ -30,6 +30,14 @@ class Trello {
         return username.toString()
     }
 
+    fun logout() {
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.logout()
+        }
+    }
+
+    //Métodos específicos para operações com quadros
+
     fun novoQuadro(titulo: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.novoQuadro(titulo)
@@ -39,6 +47,12 @@ class Trello {
     fun abrirQuadro(titulo: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.abrirQuadro(titulo)
+        }
+    }
+
+    fun fecharQuadro() {
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.fecharQuadro()
         }
     }
 
@@ -63,6 +77,14 @@ class Trello {
         return "Não há quadros."
     }
 
+    fun copiarQuadro(titulo: String, novoTitulo: String, opc: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.copiarQuadro(titulo, novoTitulo, opc)
+        }
+    }
+
+    //Métodos específicos para operações com listas
+
     fun novaLista(titulo: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.novaLista(titulo)
@@ -72,6 +94,12 @@ class Trello {
     fun abrirLista(titulo: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.abrirLista(titulo)
+        }
+    }
+
+    fun fecharLista() {
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.fecharLista()
         }
     }
 
@@ -90,6 +118,28 @@ class Trello {
 
         return ""
     }
+
+    fun copiarLista(titulo: String) {
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.copiarLista(titulo)
+        }
+    }
+
+    fun verListasArquivadas(): String{
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            return usuario.verListasArquivadas()
+        }
+
+        return ""
+    }
+
+    fun arquivarLista(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.arquvarLista(titulo)
+        }
+    }
+
+    //Métodos específicos para operações com cartões
 
     fun novoCartao(titulo: String, descricao: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
@@ -123,27 +173,4 @@ class Trello {
         }
     }
 
-    fun copiarLista(titulo: String) {
-        for (usuario in usuarios) if (usuario.isLogged()) {
-            usuario.copiarLista(titulo)
-        }
-    }
-
-    fun fecharQuadro() {
-        for (usuario in usuarios) if (usuario.isLogged()) {
-            usuario.fecharQuadro()
-        }
-    }
-
-    fun fecharLista() {
-        for (usuario in usuarios) if (usuario.isLogged()) {
-            usuario.fecharLista()
-        }
-    }
-
-    fun logout() {
-        for (usuario in usuarios) if (usuario.isLogged()){
-            usuario.logout()
-        }
-    }
 }

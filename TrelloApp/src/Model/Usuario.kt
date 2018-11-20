@@ -4,11 +4,10 @@ class Usuario(var nome: String,
     var email: String,
     var senha: String){
 
-    constructor() : this("", "", "")
 
     lateinit var username: String
-    var logado = false
-    var quadros = arrayListOf<Quadro>()
+    private var logado = false
+    private var quadros = arrayListOf<Quadro>()
 
     fun logar(): Boolean {
         this.logado = true
@@ -62,6 +61,32 @@ class Usuario(var nome: String,
         }
     }
 
+    fun copiarQuadro(titulo: String, novoTitulo: String, opc: String){
+        val quadroCopiado: Quadro
+
+        if (opc == "y"){
+            quadroCopiado = Quadro(novoTitulo)
+
+            for (quadro in this.quadros) if (quadro.nome == titulo){
+                for (lista in quadro.listas) {
+                    quadroCopiado.listas.add(lista)
+                    //todo que merda é essa
+                }
+
+            }
+            this.quadros.add(quadroCopiado)
+
+        } else {
+            quadroCopiado = Quadro(novoTitulo)
+
+            for (quadro in this.quadros) if (quadro.nome == titulo){
+                for (lista in quadro.listas) quadroCopiado.listas.add(lista)
+            }
+
+            this.quadros.add(quadroCopiado)
+        }
+    }
+
     fun novaLista(titulo: String){
         for (quadro in this.quadros) if (quadro.isOpen())
             quadro.novaLista(titulo)
@@ -74,6 +99,7 @@ class Usuario(var nome: String,
     }
 
     fun verListas(): String{
+        //Vê listas do quadro que está aberto
         for (quadro in this.quadros) if (quadro.isOpen())
             return quadro.verListas()
 
@@ -81,8 +107,23 @@ class Usuario(var nome: String,
     }
 
     fun verListas(titulo: String): String{
+        //Vê listas de um quadro específico
         for (quadro in this.quadros) if (quadro.nome == titulo){
             return quadro.verListas()
+        }
+
+        return "Não há listas."
+    }
+
+    fun arquvarLista(titulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.arquivarLista(titulo)
+        }
+    }
+
+    fun verListasArquivadas(): String{
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            return quadro.verListasArquivadas()
         }
 
         return "Não há listas."

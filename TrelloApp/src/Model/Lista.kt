@@ -4,6 +4,7 @@ class Lista(var nome: String){
 
     var cartoes = arrayListOf<Cartao>()
     var aberta = false
+    var arquivada = false
 
     fun abrirLista(){
         this.aberta = true
@@ -15,6 +16,10 @@ class Lista(var nome: String){
 
     fun isOpen(): Boolean {
         return this.aberta
+    }
+
+    fun estaArquivada(): Boolean {
+        return this.arquivada
     }
 
     fun novoCartao(titulo: String, descricao: String){
@@ -38,4 +43,5 @@ class Lista(var nome: String){
 
         this.cartoes.add(cartaoCopiado)
     }
+
 }

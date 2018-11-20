@@ -32,6 +32,7 @@ fun main(args: Array<String>) {
                             "\n3. Abrir quadro" +
                             "\n4. Arquivar" +
                             "\n5. Ver quadros arquivados" +
+                            "\n6. Copiar" +
                             "\n0. Sair" +
                             "\nPara obter ajuda pressione h"
 
@@ -75,6 +76,7 @@ fun main(args: Array<String>) {
                                         "\n4. Copiar Lista" +
                                         "\n5. Mover Lista" +
                                         "\n6. Arquivar" +
+                                        "\n7. Ver listas arquivadas" +
                                         "\n0. Voltar" +
                                         "\nPara obter ajuda pressione h"
 
@@ -211,6 +213,7 @@ fun main(args: Array<String>) {
                                                     }
 
                                                     "0" -> {
+                                                        trello.fecharLista()
                                                         println(segundoMenu)
                                                         break@loop3
                                                     }
@@ -233,6 +236,7 @@ fun main(args: Array<String>) {
                                             println("Qual lista deseja copiar?")
                                             println(trello.verListas())
                                             val nomeLista = readLine()!!.toString()
+
                                             if (nomeLista.trim() == ""){
                                                 println("Título inválido. Tente novamente.")
                                             } else {
@@ -248,7 +252,22 @@ fun main(args: Array<String>) {
 
                                         //Arquivar lista
                                         "6" ->{
+                                            println("Qual lista deseja arquivar?")
+                                            println(trello.verListas())
+                                            val nomeLista = readLine()!!.toString()
 
+                                            if (nomeLista.trim() == ""){
+                                                println("Título inválido. Tente novamente.")
+                                            } else{
+                                                trello.arquivarLista(nomeLista)
+                                                println("$nomeLista arquivada")
+                                            }
+                                        }
+
+                                        //Ver listas arquivadas
+                                        "7" ->{
+
+                                            println(trello.verListasArquivadas())
                                         }
                                         "0" -> {
                                             trello.fecharQuadro()
@@ -279,6 +298,28 @@ fun main(args: Array<String>) {
                             "5" ->{
 
                                 println(trello.verQuadrosArquivados())
+                            }
+
+                            //Copiar Quadro
+                            "6" ->{
+
+                                println("Qual quadro deseja copiar?")
+                                println(trello.verQuadros())
+                                val titulo = readLine()!!.toString()
+                                println("Novo nome para o quadro:")
+                                val novoTitulo = readLine()!!.toString()
+
+                                println("Manter cartões? (y/n)")
+                                val manterCartoes = readLine()!!.toString()
+                                if (manterCartoes == "y"){
+
+                                    trello.copiarQuadro(titulo, novoTitulo, manterCartoes)
+                                    println("Quanro copiado")
+                                } else {
+
+                                    trello.copiarQuadro(titulo, novoTitulo, manterCartoes)
+                                    println("Quadro copiado")
+                                }
                             }
 
                             "h" -> println(primeroMenu)
