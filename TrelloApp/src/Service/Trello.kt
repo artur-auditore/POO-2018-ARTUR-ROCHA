@@ -75,6 +75,14 @@ class Trello{
         }
     }
 
+    fun verCartoes(): String{
+        for (usuario in usuarios) if (usuario.isLogged()){
+            return usuario.verCartoes()
+        }
+
+        return ""
+    }
+
     fun copiarLista(titulo: String){
         for (usuario in usuarios) if (usuario.isLogged()){
             usuario.copiarLista(titulo)

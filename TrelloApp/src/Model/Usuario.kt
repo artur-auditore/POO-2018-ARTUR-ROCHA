@@ -63,6 +63,14 @@ class Usuario(var nome: String,
             quadro.novoCartao(titulo, descricao)
     }
 
+    fun verCartoes(): String{
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            return quadro.verCartoes()
+        }
+
+        return ""
+    }
+
     fun copiarLista(titulo: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.copiarLista(titulo)

@@ -151,9 +151,11 @@ fun main(args: Array<String>) {
 
                                                         println("Título:")
                                                         val tituloCartao = readLine()!!.toString()
-                                                        trello
+                                                        println(trello.verCartoes())
                                                         if (tituloCartao.trim() == "") {
                                                             println("Forneça um título inválido")
+                                                        } else {
+
                                                         }
                                                     }
 
@@ -164,7 +166,7 @@ fun main(args: Array<String>) {
 
                                                     //Lista de cartões (pelo nome)
                                                     "6" ->{
-
+                                                        println(trello.verCartoes())
                                                     }
 
                                                     "0" -> {

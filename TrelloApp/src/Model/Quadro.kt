@@ -40,7 +40,11 @@ class Quadro (var nome: String){
     }
 
     fun verCartoes(): String{
-        
+        for (lista in this.listas) if (lista.isOpen()){
+            return lista.verCartoes()
+        }
+
+        return ""
     }
 
     fun copiarLista(titulo: String){
