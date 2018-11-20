@@ -40,6 +40,12 @@ class Usuario(var nome: String,
         return dados
     }
 
+    fun fecharQuadro(){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.fecharQuadro()
+        }
+    }
+
     fun novaLista(titulo: String){
         for (quadro in this.quadros) if (quadro.isOpen())
             quadro.novaLista(titulo)
@@ -96,6 +102,12 @@ class Usuario(var nome: String,
             for (lista in quadro.listas) if (lista.nome == nomeLista){
                 lista.cartoes.add(cartaoCopiado)
             }
+        }
+    }
+
+    fun fecharLista() {
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.fecharLista()
         }
     }
 }

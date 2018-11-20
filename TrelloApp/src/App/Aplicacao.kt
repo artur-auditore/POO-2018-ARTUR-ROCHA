@@ -248,6 +248,7 @@ fun main(args: Array<String>) {
                                         }
                                         "0" -> {
                                             println(menuQuadro)
+                                            trello.fecharLista()
                                             break@loop2
                                         }
 
@@ -266,6 +267,7 @@ fun main(args: Array<String>) {
 
                             "0" -> {
                                 println()
+                                trello.fecharQuadro()
                                 break@loop1
                             }
 

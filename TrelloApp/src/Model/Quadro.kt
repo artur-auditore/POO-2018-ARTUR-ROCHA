@@ -33,6 +33,12 @@ class Quadro (var nome: String){
         return dados
     }
 
+    fun fecharLista(){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.fecharLista()
+        }
+    }
+
     fun novoCartao(titulo: String, descricao: String){
         for (lista in this.listas) if (lista.isOpen()){
             lista.novoCartao(titulo, descricao)
