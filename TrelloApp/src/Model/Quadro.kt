@@ -89,6 +89,20 @@ class Quadro (var nome: String){
 
     }
 
+    fun arquivarCartao(titulo: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.arquivarCartao(titulo)
+        }
+    }
+
+    fun verCartoesArquivados(): String{
+        for (lista in this.listas) if (lista.isOpen()){
+            return lista.verCartoesArquivados()
+        }
+
+        return ""
+    }
+
     fun copiarLista(titulo: String){
         val listaCopiada = Lista(titulo)
 

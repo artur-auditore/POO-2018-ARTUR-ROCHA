@@ -173,4 +173,16 @@ class Trello {
         }
     }
 
+    fun arquivarCartao(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.arquivarCartao(titulo)
+        }
+    }
+
+    fun verCartoesArquivados(): String{
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            return usuario.verCartoesArquivados()
+        }
+        return "Não há cartões no arquivo"
+    }
 }

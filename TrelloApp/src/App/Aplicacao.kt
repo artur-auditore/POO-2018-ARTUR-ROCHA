@@ -113,8 +113,9 @@ fun main(args: Array<String>) {
                                                     "\n2. Abrir cartão" +
                                                     "\n3. Mover" +
                                                     "\n4. Copiar" +
-                                                    "\n5. Arquvar" +
-                                                    "\n6. Ver cartões" +
+                                                    "\n5. Arquivar" +
+                                                    "\n6. Ver itens arquivados" +
+                                                    "\n7. Ver cartões" +
                                                     "\n0. Sair" +
                                                     "\nPara obter ajuda pressione h"
 
@@ -205,10 +206,25 @@ fun main(args: Array<String>) {
                                                     //Arquivar cartão
                                                     "5" ->{
 
+                                                        println("Escolha um cartão para arquivar:")
+                                                        println(trello.verCartoes())
+                                                        val titulo = readLine()!!.toString()
+
+                                                        if (titulo.trim() == ""){
+                                                            println("Forneça um título válido.")
+                                                        } else {
+                                                            trello.arquivarCartao(titulo)
+                                                            println("$titulo arquivado.")
+                                                        }
                                                     }
 
-                                                    //Lista de cartões (pelo nome)
+                                                    //Lista por nome os cartões arquivados
                                                     "6" ->{
+                                                        println(trello.verCartoesArquivados())
+                                                    }
+
+                                                    //Lista por nome todos os cartões
+                                                    "7" ->{
                                                         println(trello.verCartoes())
                                                     }
 

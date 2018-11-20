@@ -30,7 +30,9 @@ class Lista(var nome: String){
 
     fun verCartoes(): String{
         var dados = ""
-        for (cartao in this.cartoes) dados += "${cartao.titulo}\n"
+        for (cartao in this.cartoes) if (!cartao.estaArquivado()){
+            dados += "${cartao.titulo}\n"
+        }
         return dados
     }
 
@@ -42,6 +44,21 @@ class Lista(var nome: String){
         }
 
         this.cartoes.add(cartaoCopiado)
+    }
+
+    fun arquivarCartao(titulo: String){
+        for (cartao in this.cartoes) if (cartao.titulo == titulo){
+            cartao.arquivado = true
+        }
+    }
+
+    fun verCartoesArquivados(): String{
+        var dados = ""
+        for (cartao in this.cartoes) if (cartao.estaArquivado()){
+            dados += "${cartao.titulo}\n"
+        }
+
+        return dados
     }
 
 }

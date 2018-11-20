@@ -166,6 +166,20 @@ class Usuario(var nome: String,
         }
     }
 
+    fun arquivarCartao(titulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.arquivarCartao(titulo)
+        }
+    }
+
+    fun verCartoesArquivados(): String{
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            return quadro.verCartoesArquivados()
+        }
+
+        return ""
+    }
+
     fun fecharLista() {
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.fecharLista()
