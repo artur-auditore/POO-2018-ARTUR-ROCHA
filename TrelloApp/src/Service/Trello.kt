@@ -145,6 +145,12 @@ class Trello {
         }
     }
 
+    fun renomearLista(titulo: String, novoTitulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.renomearLista(titulo, novoTitulo)
+        }
+    }
+
     //Métodos específicos para operações com cartões
 
     fun novoCartao(titulo: String, descricao: String) {

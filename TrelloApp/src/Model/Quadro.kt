@@ -61,6 +61,12 @@ class Quadro (var nome: String){
         return dados
     }
 
+    fun renomearLista(titulo: String, novoTitulo: String){
+        for (lista in this.listas) if (lista.nome == titulo){
+            lista.nome = novoTitulo
+        }
+    }
+
     fun novoCartao(titulo: String, descricao: String){
         for (lista in this.listas) if (lista.isOpen()){
             lista.novoCartao(titulo, descricao)

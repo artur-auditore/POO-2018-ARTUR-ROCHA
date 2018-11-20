@@ -139,6 +139,12 @@ class Usuario(var nome: String,
         }
     }
 
+    fun renomearLista(titulo: String, novoTitulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.renomearLista(titulo, novoTitulo)
+        }
+    }
+
     fun novoCartao(titulo: String, descricao: String){
         for (quadro in this.quadros) if (quadro.isOpen())
             quadro.novoCartao(titulo, descricao)

@@ -112,11 +112,12 @@ fun main(args: Array<String>) {
 
                                             val terceiroMenu = "1. Novo cartão" +
                                                     "\n2. Abrir cartão" +
-                                                    "\n3. Mover" +
+                                                    "\n3. Ver Listas" +
                                                     "\n4. Copiar" +
-                                                    "\n5. Arquivar" +
-                                                    "\n6. Ver itens arquivados" +
-                                                    "\n7. Ver cartões" +
+                                                    "\n5. Mover" +
+                                                    "\n6. Renomear" +
+                                                    "\n7. Arquivar" +
+                                                    "\n8. Ver itens arquivados" +
                                                     "\n0. Sair" +
                                                     "\nPara obter ajuda pressione h"
 
@@ -267,8 +268,25 @@ fun main(args: Array<String>) {
 
                                         }
 
-                                        //Arquivar lista
+                                        //Renomear
                                         "6" ->{
+
+                                            println("Qual lista deseja renomear?")
+                                            println(trello.verListas())
+                                            val nomeLista = readLine()!!.toString()
+                                            println("Atribua um novo título:")
+                                            val novoTitulo = readLine()!!.toString()
+
+                                            if (nomeLista.trim() == "" || novoTitulo.trim() == ""){
+                                                println("Tente novamente com um nome válido.")
+                                            } else{
+                                                trello.renomearLista(nomeLista, novoTitulo)
+                                                println("Renomeado.")
+                                            }
+                                        }
+
+                                        //Arquivar lista
+                                        "7" ->{
                                             println("Qual lista deseja arquivar?")
                                             println(trello.verListas())
                                             val nomeLista = readLine()!!.toString()
@@ -282,7 +300,7 @@ fun main(args: Array<String>) {
                                         }
 
                                         //Ver listas arquivadas
-                                        "7" ->{
+                                        "8" ->{
 
                                             println(trello.verListasArquivadas())
                                         }
