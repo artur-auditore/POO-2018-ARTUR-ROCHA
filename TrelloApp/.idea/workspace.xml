@@ -12,22 +12,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Aplicacao.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Aplicacao.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App/Aplicacao.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-222">
-              <caret line="225" column="77" lean-forward="false" selection-start-line="225" selection-start-column="77" selection-end-line="225" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cartao.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Cartao.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="748">
+              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding>
+                <element signature="e#3194#15859#1" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -45,18 +37,18 @@
       <file leaf-file-name="Quadro.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Quadro.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
+            <state relative-caret-position="305">
               <caret line="102" column="16" lean-forward="false" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Usuario.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Usuario.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Usuario.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="179" column="16" lean-forward="false" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="16" />
+            <state relative-caret-position="288">
+              <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -319,12 +311,12 @@
       <workItem from="1542636021968" duration="25584000" />
       <workItem from="1542681868953" duration="963000" />
       <workItem from="1542713662688" duration="8326000" />
-      <workItem from="1542728955766" duration="8593000" />
+      <workItem from="1542728955766" duration="9422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47670000" />
+    <option name="totallyTimeSpent" value="48499000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -352,7 +344,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -412,7 +404,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3194#15859#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -462,7 +456,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2839">
           <caret line="167" column="82" lean-forward="false" selection-start-line="167" selection-start-column="82" selection-end-line="167" selection-end-column="82" />
-          <folding />
+          <folding>
+            <element signature="e#3194#15859#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -504,7 +500,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3194#15859#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -546,7 +544,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3194#15859#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -605,30 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Quadro.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="102" column="16" lean-forward="false" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Usuario.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="179" column="16" lean-forward="false" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Cartao.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Lista.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
@@ -647,10 +623,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Cartao.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Aplicacao.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-222">
-          <caret line="225" column="77" lean-forward="false" selection-start-line="225" selection-start-column="77" selection-end-line="225" selection-end-column="77" />
+        <state relative-caret-position="748">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="e#3194#15859#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Quadro.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="102" column="16" lean-forward="false" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Usuario.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
           <folding />
         </state>
       </provider>
