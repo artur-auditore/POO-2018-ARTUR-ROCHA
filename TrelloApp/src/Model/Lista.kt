@@ -28,4 +28,12 @@ class Lista(var nome: String){
         for (cartao in this.cartoes) dados += "${cartao.titulo}\n"
         return dados
     }
+
+    fun copiarCartao(titulo: String){
+        val cartaoCopiado = Cartao(titulo)
+
+        for (cartao in this.cartoes) if (cartao.titulo == titulo){
+            this.cartoes.add(cartaoCopiado)
+        }
+    }
 }

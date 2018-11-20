@@ -58,6 +58,12 @@ class Usuario(var nome: String,
         return ""
     }
 
+    fun copiarLista(titulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.copiarLista(titulo)
+        }
+    }
+
     fun novoCartao(titulo: String, descricao: String){
         for (quadro in this.quadros) if (quadro.isOpen())
             quadro.novoCartao(titulo, descricao)
@@ -71,9 +77,25 @@ class Usuario(var nome: String,
         return ""
     }
 
-    fun copiarLista(titulo: String){
+    fun copiarCartao(titulo: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
-            quadro.copiarLista(titulo)
+            quadro.copiarCartao(titulo)
+        }
+    }
+
+    fun copiarCartao(titulo: String, nomeLista: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.copiarCartao(titulo, nomeLista)
+        }
+    }
+
+    fun copiarCartao(titulo: String, nomeLista: String, nomeQuadro: String){
+        val cartaoCopiado = Cartao(titulo)
+
+        for (quadro in this.quadros) if (quadro.nome == nomeQuadro){
+            for (lista in quadro.listas) if (lista.nome == nomeLista){
+                lista.cartoes.add(cartaoCopiado)
+            }
         }
     }
 }

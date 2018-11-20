@@ -155,7 +155,44 @@ fun main(args: Array<String>) {
                                                         if (tituloCartao.trim() == "") {
                                                             println("Forneça um título inválido")
                                                         } else {
+                                                            println("Para onde deseja copiar $tituloCartao?" +
+                                                                    "\n1. Mesma lista   " +
+                                                                    "\n2. Outra lista " +
+                                                                    "\n3. Outro lista de outro quadro")
 
+                                                            val opcaoCopiar = readLine()!!.toString()
+                                                            when (opcaoCopiar){
+
+                                                                //Copia para a mesma lista
+                                                                "1" -> {
+                                                                    trello.copiarCartao(tituloCartao)
+                                                                    println("$tituloCartao copiado.")
+                                                                }
+
+                                                                //Copia para outra lista do mesmo quadro
+                                                                "2" ->{
+                                                                    println("Deseja copiar para qual lista?")
+                                                                    println(trello.verListas())
+                                                                    val tituloLista = readLine()!!.toString()
+
+                                                                    trello.copiarCartao(tituloCartao, tituloLista)
+                                                                    println("$tituloCartao copiado.")
+                                                                }
+
+                                                                //Escolhe um quadro e uma lista para copiar o cartão
+                                                                "3" ->{
+                                                                    println("Deseja copiar para qual quadro?")
+                                                                    println(trello.verQuadros())
+                                                                    val tituloQuadro = readLine()!!.toString()
+                                                                    println("Escolha a lista de destino:")
+                                                                    println(trello.verListas())
+                                                                    val tituloLista = readLine()!!.toString()
+
+                                                                    trello.copiarCartao(tituloCartao, tituloLista,
+                                                                        tituloQuadro)
+                                                                    println("$tituloCartao copiado.")
+                                                                }
+                                                            }
                                                         }
                                                     }
 

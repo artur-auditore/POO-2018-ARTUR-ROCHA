@@ -83,6 +83,24 @@ class Trello{
         return ""
     }
 
+    fun copiarCartao(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.copiarCartao(titulo)
+        }
+    }
+
+    fun copiarCartao(titulo: String, nomeLista: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.copiarCartao(titulo, nomeLista)
+        }
+    }
+
+    fun copiarCartao(titulo: String, nomeLista: String, nomeQuadro: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.copiarCartao(titulo, nomeLista, nomeQuadro)
+        }
+    }
+
     fun copiarLista(titulo: String){
         for (usuario in usuarios) if (usuario.isLogged()){
             usuario.copiarLista(titulo)

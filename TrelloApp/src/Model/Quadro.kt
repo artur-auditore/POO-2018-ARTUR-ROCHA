@@ -2,7 +2,7 @@ package Model
 
 class Quadro (var nome: String){
 
-    private var listas = arrayListOf<Lista>()
+    var listas = arrayListOf<Lista>()
     var aberto = false
 
     fun abrirQuadro(){
@@ -45,6 +45,20 @@ class Quadro (var nome: String){
         }
 
         return ""
+    }
+
+    fun copiarCartao(titulo: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.copiarCartao(titulo)
+        }
+    }
+
+    fun copiarCartao(titulo: String, nomeLista: String){
+        val cartaoCopiado = Cartao(titulo)
+
+        for (lista in this.listas) if (lista.nome == nomeLista){
+            for (cartao in lista.cartoes) lista.cartoes.add(cartaoCopiado)
+        }
     }
 
     fun copiarLista(titulo: String){
