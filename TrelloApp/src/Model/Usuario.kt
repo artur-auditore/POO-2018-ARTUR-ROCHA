@@ -42,7 +42,17 @@ class Usuario(var nome: String,
 
     fun verQuadros():String{
         var dados = ""
-        for (quadro in this.quadros) dados += "${quadro.nome}\n"
+        for (quadro in this.quadros) if (!quadro.estaArquivado()){
+            dados += "${quadro.nome}\n"
+        }
+        return dados
+    }
+
+    fun verQuadrosArquivados(): String{
+        var dados = ""
+        for (quadro in this.quadros) if (quadro.estaArquivado()){
+            dados += "${quadro.nome}\n"
+        }
         return dados
     }
 

@@ -17,6 +17,11 @@ class Quadro (var nome: String){
     fun isOpen(): Boolean {
         return this.aberto
     }
+
+    fun estaArquivado(): Boolean {
+        return this.arquivado
+    }
+
     fun novaLista(nome: String){
         val lista = Lista(nome)
         this.listas.add(lista)

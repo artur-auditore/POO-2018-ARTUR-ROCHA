@@ -15,9 +15,11 @@
       <file leaf-file-name="Aplicacao.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App/Aplicacao.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4268">
-              <caret line="33" column="56" lean-forward="false" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
-              <folding />
+            <state relative-caret-position="118">
+              <caret line="280" column="69" lean-forward="false" selection-start-line="280" selection-start-column="69" selection-end-line="280" selection-end-column="69" />
+              <folding>
+                <element signature="e#3079#13617#1" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -35,8 +37,8 @@
       <file leaf-file-name="Quadro.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Quadro.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            <state relative-caret-position="357">
+              <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -45,8 +47,8 @@
       <file leaf-file-name="Usuario.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Usuario.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="38" column="35" lean-forward="false" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+            <state relative-caret-position="204">
+              <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -55,8 +57,8 @@
       <file leaf-file-name="Trello.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/Trello.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="73" column="43" lean-forward="false" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
+            <state relative-caret-position="373">
+              <caret line="54" column="31" lean-forward="false" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -85,10 +87,10 @@
         <option value="$PROJECT_DIR$/src/Model/Cartao.kt" />
         <option value="$PROJECT_DIR$/src/Model/Etiqueta.kt" />
         <option value="$PROJECT_DIR$/src/Model/Lista.kt" />
-        <option value="$PROJECT_DIR$/src/Service/Trello.kt" />
-        <option value="$PROJECT_DIR$/src/App/Aplicacao.kt" />
         <option value="$PROJECT_DIR$/src/Model/Quadro.kt" />
         <option value="$PROJECT_DIR$/src/Model/Usuario.kt" />
+        <option value="$PROJECT_DIR$/src/Service/Trello.kt" />
+        <option value="$PROJECT_DIR$/src/App/Aplicacao.kt" />
       </list>
     </option>
   </component>
@@ -300,12 +302,12 @@
       <workItem from="1542629255158" duration="4204000" />
       <workItem from="1542636021968" duration="25584000" />
       <workItem from="1542681868953" duration="963000" />
-      <workItem from="1542713662688" duration="5437000" />
+      <workItem from="1542713662688" duration="6204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36188000" />
+    <option name="totallyTimeSpent" value="36955000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -318,7 +320,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -329,7 +330,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.60855263" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.60855263" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -393,7 +394,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2839">
           <caret line="167" column="82" lean-forward="false" selection-start-line="167" selection-start-column="82" selection-end-line="167" selection-end-column="82" />
-          <folding />
+          <folding>
+            <element signature="e#3079#13617#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -433,7 +436,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3079#13617#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -473,7 +478,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3079#13617#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -545,35 +552,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Quadro.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Usuario.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="38" column="35" lean-forward="false" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+        <state relative-caret-position="204">
+          <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/Trello.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="73" column="43" lean-forward="false" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Quadro.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        <state relative-caret-position="373">
+          <caret line="54" column="31" lean-forward="false" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Aplicacao.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4268">
-          <caret line="33" column="56" lean-forward="false" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
-          <folding />
+        <state relative-caret-position="118">
+          <caret line="280" column="69" lean-forward="false" selection-start-line="280" selection-start-column="69" selection-end-line="280" selection-end-column="69" />
+          <folding>
+            <element signature="e#3079#13617#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

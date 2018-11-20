@@ -42,11 +42,25 @@ class Trello {
         }
     }
 
+    fun arquivarQuadro(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            return usuario.arquivar(titulo)
+        }
+    }
+
     fun verQuadros(): String {
         for (usuario in usuarios) if (usuario.isLogged())
             return usuario.verQuadros()
 
-        return ""
+        return "Não há quadros."
+    }
+
+    fun verQuadrosArquivados(): String{
+        for (usuario in usuarios) if (usuario.isLogged()){
+            return usuario.verQuadrosArquivados()
+        }
+
+        return "Não há quadros."
     }
 
     fun novaLista(titulo: String) {

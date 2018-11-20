@@ -263,10 +263,24 @@ fun main(args: Array<String>) {
                                     }
                                 }
                             }
-                            //Cartões(???)
+
+                            //Arquivar
                             "4" ->{
 
+                                println("Qual dos quadros deseja arquivar?")
+                                println(trello.verQuadros())
+                                val tituloQuadro = readLine()!!.toString()
+
+                                trello.arquivarQuadro(tituloQuadro)
+                                println("$tituloQuadro arquivado.")
                             }
+
+                            //Ver quadros arquivados
+                            "5" ->{
+
+                                println(trello.verQuadrosArquivados())
+                            }
+
                             "h" -> println(primeroMenu)
 
                             "0" -> {
