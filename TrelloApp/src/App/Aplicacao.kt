@@ -33,6 +33,7 @@ fun main(args: Array<String>) {
                             "\n4. Arquivar" +
                             "\n5. Ver quadros arquivados" +
                             "\n6. Copiar" +
+                            "\n7. Renomear" +
                             "\n0. Sair" +
                             "\nPara obter ajuda pressione h"
 
@@ -335,6 +336,22 @@ fun main(args: Array<String>) {
 
                                     trello.copiarQuadro(titulo, novoTitulo, manterCartoes)
                                     println("Quadro copiado")
+                                }
+                            }
+
+                            //Renomar quadro
+                            "7" ->{
+                                println("Qual quadro deseja renomear?")
+                                println(trello.verQuadros())
+                                val titulo = readLine()!!.toString()
+                                println("Novo nome para o quadro:")
+                                val novoTitulo = readLine()!!.toString()
+
+                                if (titulo.trim() == "" || novoTitulo.trim() == ""){
+                                    println("Tente novamente com um nome válido.")
+                                } else {
+                                    trello.renomearQuadro(titulo, novoTitulo)
+                                    println("Renomeado.")
                                 }
                             }
 

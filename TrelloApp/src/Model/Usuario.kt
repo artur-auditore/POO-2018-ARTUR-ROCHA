@@ -79,9 +79,15 @@ class Usuario(var nome: String,
             for (quadro in this.quadros) if (quadro.nome == titulo)
                 for (lista in quadro.listas) quadroCopiado.listas.add(lista)
 
-
+            //Dá bug e apaga os cartões das listas do quadro copiado também '-'
             for (lista in quadroCopiado.listas) lista.cartoes.clear()
             this.quadros.add(quadroCopiado)
+        }
+    }
+
+    fun renomearQuadro(titulo: String, novoTitulo: String){
+        for (quadro in this.quadros) if (quadro.nome == titulo){
+            quadro.nome = novoTitulo
         }
     }
 

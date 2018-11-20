@@ -83,6 +83,12 @@ class Trello {
         }
     }
 
+    fun renomearQuadro(titulo: String, novoTitulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.renomearQuadro(titulo, novoTitulo)
+        }
+    }
+
     //Métodos específicos para operações com listas
 
     fun novaLista(titulo: String) {
