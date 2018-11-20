@@ -22,4 +22,10 @@ class Lista(var nome: String){
         cartao.descricao = descricao
         this.cartoes.add(cartao)
     }
+
+    fun verCartoes(): String{
+        var dados = ""
+        for (cartao in this.cartoes) dados += "${cartao.titulo}\n"
+        return dados
+    }
 }

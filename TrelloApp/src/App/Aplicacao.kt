@@ -1,9 +1,6 @@
 package App
 
 import Service.Trello
-import org.omg.CORBA.portable.InputStream
-import java.io.File
-import java.io.FileInputStream
 
 fun main(args: Array<String>) {
 
@@ -81,8 +78,9 @@ fun main(args: Array<String>) {
 
                                 println(menuQuadro)
                                 loop2@ while (true){
-                                    print("Opção:")
+                                    print("Opção: ")
                                     val opcaoQuadro = readLine()!!.toString()
+
                                     when(opcaoQuadro){
 
                                         //Adicionar Lista
@@ -97,6 +95,7 @@ fun main(args: Array<String>) {
                                                 println("$titulo criada.")
                                             }
                                         }
+
                                         //Abrir Lista
                                         "2" ->{
                                             println("Qual lista deseja abrir?")
@@ -111,6 +110,7 @@ fun main(args: Array<String>) {
                                                     "\n3. Mover" +
                                                     "\n4. Copiar" +
                                                     "\n5. Arquvar" +
+                                                    "\n6. Ver cartões" +
                                                     "\n0. Sair" +
                                                     "\nPara obter ajuda pressione h"
 
@@ -124,7 +124,7 @@ fun main(args: Array<String>) {
                                                     //Novo cartão
                                                     "1" ->{
 
-                                                        println("Título: ")
+                                                        println("Título:")
                                                         val tituloCartao = readLine()!!.toString()
                                                         println("Descrição")
                                                         val descCartao = readLine()!!.toString()
@@ -132,39 +132,103 @@ fun main(args: Array<String>) {
                                                             println("Forneça um título inválido")
                                                         } else {
                                                             trello.novoCartao(tituloCartao, descCartao)
+                                                            println("$tituloCartao criado")
                                                         }
+                                                    }
+
+                                                    //Abrir cartão (para editar também)
+                                                    "2" ->{
 
                                                     }
 
-                                                    "0" -> break@loop3
+                                                    //Mover catão (muda a posição)
+                                                    "3" ->{
+
+                                                    }
+
+                                                    //Copiar cartão
+                                                    "4" ->{
+
+                                                        println("Título:")
+                                                        val tituloCartao = readLine()!!.toString()
+                                                        trello
+                                                        if (tituloCartao.trim() == "") {
+                                                            println("Forneça um título inválido")
+                                                        }
+                                                    }
+
+                                                    //Arquivar cartão
+                                                    "5" ->{
+
+                                                    }
+
+                                                    //Lista de cartões (pelo nome)
+                                                    "6" ->{
+
+                                                    }
+
+                                                    "0" -> {
+                                                        println(menuQuadro)
+                                                        break@loop3
+                                                    }
+
                                                     "h" -> println(menuCartao)
+
                                                     else -> println("Opção inválida.")
                                                 }
                                             }
+                                        }
+
+                                        //Ver listas
+                                        "3" ->{
+                                            println(trello.verListas())
+                                        }
+
+                                        //Copiar lista
+                                        "4" ->{
+
+                                            println("Qual lista deseja copiar?")
+                                            println(trello.verListas())
+                                            val nomeLista = readLine()!!.toString()
+                                            if (nomeLista.trim() == ""){
+                                                println("Título inválido. Tente novamente.")
+                                            } else {
+                                                trello.copiarLista(nomeLista)
+                                                println("$nomeLista copiada.")
+                                            }
+                                        }
+
+                                        //Mover lista (mudar a posição)
+                                        "5" ->{
 
                                         }
 
-                                        "0" -> break@loop2
+                                        //Arquivar lista
+                                        "6" ->{
+
+                                        }
+                                        "0" -> {
+                                            println(menuQuadro)
+                                            break@loop2
+                                        }
+
                                         "h" -> println(menuQuadro)
+
                                         else -> println("Opção inválida.")
 
                                     }
-
-
                                 }
-
-                            }
-                            //Novo Cartão
-                            "4" ->{
-
                             }
                             //Cartões(???)
-                            "6" ->{
+                            "4" ->{
 
                             }
                             "h" -> println(menuUsuario)
 
-                            "0" -> break@loop1
+                            "0" -> {
+                                println()
+                                break@loop1
+                            }
 
                             else -> println("Opção inválida.")
                         }
@@ -192,10 +256,12 @@ fun main(args: Array<String>) {
                             "\nSeu nome de usuário é ${trello.gerarUsername(nome)}\n")
                 }
             }
-            "0" -> break@loop
+            "0" -> {
+                println("Encerrado.")
+                break@loop
+            }
 
             else -> println("Opção inválida.")
         }
-
     }
 }

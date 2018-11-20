@@ -1,5 +1,6 @@
 package Service
 
+import Model.Cartao
 import Model.Usuario
 import java.lang.StringBuilder
 
@@ -71,6 +72,12 @@ class Trello{
     fun novoCartao(titulo: String, descricao: String){
         for (usuario in usuarios) if (usuario.isLogged()){
             usuario.novoCartao(titulo, descricao)
+        }
+    }
+
+    fun copiarLista(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()){
+            usuario.copiarLista(titulo)
         }
     }
 }
