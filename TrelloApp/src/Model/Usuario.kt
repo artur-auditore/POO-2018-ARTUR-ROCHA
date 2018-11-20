@@ -67,22 +67,20 @@ class Usuario(var nome: String,
         if (opc == "y"){
             quadroCopiado = Quadro(novoTitulo)
 
-            for (quadro in this.quadros) if (quadro.nome == titulo){
-                for (lista in quadro.listas) {
-                    quadroCopiado.listas.add(lista)
-                    //todo que merda é essa
-                }
+            for (quadro in this.quadros) if (quadro.nome == titulo)
+                for (lista in quadro.listas) quadroCopiado.listas.add(lista)
 
-            }
+
             this.quadros.add(quadroCopiado)
 
         } else {
             quadroCopiado = Quadro(novoTitulo)
 
-            for (quadro in this.quadros) if (quadro.nome == titulo){
+            for (quadro in this.quadros) if (quadro.nome == titulo)
                 for (lista in quadro.listas) quadroCopiado.listas.add(lista)
-            }
 
+
+            for (lista in quadroCopiado.listas) lista.cartoes.clear()
             this.quadros.add(quadroCopiado)
         }
     }
