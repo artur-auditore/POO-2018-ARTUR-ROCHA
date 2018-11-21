@@ -190,6 +190,12 @@ class Usuario(var nome: String,
         return ""
     }
 
+    fun renomearCartao(titulo: String, novoTitulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.renomearCartao(titulo, novoTitulo)
+        }
+    }
+
     fun fecharLista() {
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.fecharLista()

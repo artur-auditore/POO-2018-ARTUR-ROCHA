@@ -109,6 +109,12 @@ class Quadro (var nome: String){
         return ""
     }
 
+    fun renomearCartao(titulo: String, novoTitulo: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.renomearCartao(titulo, novoTitulo)
+        }
+    }
+
     fun copiarLista(titulo: String){
         val listaCopiada = Lista(titulo)
 

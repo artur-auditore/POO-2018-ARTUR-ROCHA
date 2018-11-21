@@ -197,4 +197,10 @@ class Trello {
         }
         return "Não há cartões no arquivo"
     }
+
+    fun renomearCartao(titulo: String, novoTitulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.renomearCartao(titulo, novoTitulo)
+        }
+    }
 }

@@ -61,4 +61,10 @@ class Lista(var nome: String){
         return dados
     }
 
+    fun renomearCartao(titulo: String, novoTitulo: String){
+        for (cartao in this.cartoes) if (cartao.titulo == titulo){
+            cartao.titulo = novoTitulo
+        }
+    }
+
 }

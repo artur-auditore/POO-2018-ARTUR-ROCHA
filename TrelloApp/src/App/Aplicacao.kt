@@ -112,12 +112,12 @@ fun main(args: Array<String>) {
 
                                             val terceiroMenu = "1. Novo cartão" +
                                                     "\n2. Abrir cartão" +
-                                                    "\n3. Ver Listas" +
+                                                    "\n3. Ver Cartões" +
                                                     "\n4. Copiar" +
                                                     "\n5. Mover" +
                                                     "\n6. Renomear" +
                                                     "\n7. Arquivar" +
-                                                    "\n8. Ver itens arquivados" +
+                                                    "\n8. Ver cartões arquivados" +
                                                     "\n0. Sair" +
                                                     "\nPara obter ajuda pressione h"
 
@@ -143,14 +143,14 @@ fun main(args: Array<String>) {
                                                         }
                                                     }
 
-                                                    //Abrir cartão (para editar também)
+                                                    //Todo Abrir cartão (para editar também)
                                                     "2" ->{
 
                                                     }
 
-                                                    //Mover catão (muda a posição)
+                                                    //Ver cartões (por título)
                                                     "3" ->{
-
+                                                        println(trello.verCartoes())
                                                     }
 
                                                     //Copiar cartão
@@ -205,8 +205,29 @@ fun main(args: Array<String>) {
                                                         }
                                                     }
 
-                                                    //Arquivar cartão
+                                                    //Todo Mover
                                                     "5" ->{
+
+                                                    }
+
+                                                    //Renomear Cartão
+                                                    "6" ->{
+                                                        println("Qual cartão deseja renomear?")
+                                                        println(trello.verCartoes())
+                                                        val tituloCartao = readLine()!!.toString()
+                                                        println("Atribua um novo título:")
+                                                        val novoTitulo = readLine()!!.toString()
+
+                                                        if (tituloCartao.trim() == "" || novoTitulo.trim() == ""){
+                                                            println("Tente novamente com um título válido.")
+                                                        } else {
+                                                            trello.renomearCartao(tituloCartao, novoTitulo)
+                                                            println("Renomeado.")
+                                                        }
+                                                    }
+
+                                                    //Arquivar cartão
+                                                    "7" ->{
 
                                                         println("Escolha um cartão para arquivar:")
                                                         println(trello.verCartoes())
@@ -221,13 +242,13 @@ fun main(args: Array<String>) {
                                                     }
 
                                                     //Lista por nome os cartões arquivados
-                                                    "6" ->{
+                                                    "8" ->{
                                                         println(trello.verCartoesArquivados())
                                                     }
 
                                                     //Lista por nome todos os cartões
-                                                    "7" ->{
-                                                        println(trello.verCartoes())
+                                                    "9" ->{
+
                                                     }
 
                                                     "0" -> {
