@@ -196,6 +196,18 @@ class Usuario(var nome: String,
         }
     }
 
+    fun abrirCartao(titulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.abrirCartao(titulo)
+        }
+    }
+
+    fun fecharCartao(){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.fecharCartao()
+        }
+    }
+
     fun fecharLista() {
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.fecharLista()

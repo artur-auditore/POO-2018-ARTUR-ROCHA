@@ -203,4 +203,16 @@ class Trello {
             usuario.renomearCartao(titulo, novoTitulo)
         }
     }
+
+    fun abrirCartao(titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.abrirCartao(titulo)
+        }
+    }
+
+    fun fecharCartao(){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.fecharCartao()
+        }
+    }
 }

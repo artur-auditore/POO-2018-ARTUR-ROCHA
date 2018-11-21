@@ -67,4 +67,16 @@ class Lista(var nome: String){
         }
     }
 
+    fun abrirCartao(titulo: String){
+        for (cartao in this.cartoes) if (cartao.titulo == titulo){
+            cartao.abrir()
+        }
+    }
+
+    fun fecharCartao(){
+        for (cartao in this.cartoes) if (cartao.isOpen()){
+            cartao.fechar()
+        }
+    }
+
 }

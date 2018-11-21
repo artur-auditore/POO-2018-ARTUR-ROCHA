@@ -115,6 +115,18 @@ class Quadro (var nome: String){
         }
     }
 
+    fun abrirCartao(titulo: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.abrirCartao(titulo)
+        }
+    }
+
+    fun fecharCartao(){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.fecharCartao()
+        }
+    }
+
     fun copiarLista(titulo: String){
         val listaCopiada = Lista(titulo)
 

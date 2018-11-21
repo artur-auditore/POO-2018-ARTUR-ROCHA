@@ -146,6 +146,64 @@ fun main(args: Array<String>) {
                                                     //Todo Abrir cartão (para editar também)
                                                     "2" ->{
 
+                                                        println("Qual cartão deseja abrir?")
+                                                        println(trello.verCartoes())
+                                                        val tituloCartao = readLine()!!.toString()
+
+                                                        if (tituloCartao.trim() == ""){
+                                                            println("Tente novamente com um nome válido.")
+                                                        } else{
+
+                                                            trello.abrirCartao(tituloCartao)
+                                                            println("Cartão aberto.")
+
+                                                            val quartoMenu = "1. Adicionar/Mudar descrição" +
+                                                                    "\n2. Adicionar comentário" +
+                                                                    "\n3. Definir etiquetas" +
+                                                                    "\n4. Log" + //não sei se é aqui mesmo
+                                                                    "\n0. Sair" +
+                                                                    "\nPara obter ajuda pressione h"
+
+                                                            println(quartoMenu)
+                                                            loop4@ while (true){
+                                                                print("Opção: ")
+                                                                val opc = readLine()!!.toString()
+
+                                                                when(opc){
+
+                                                                    //Todo Adicionar/Mudar descrição
+                                                                    "1" ->{
+
+                                                                    }
+
+                                                                    //Todo Adicionar Comentário
+                                                                    "2" ->{
+
+                                                                    }
+
+                                                                    //Todo Definir etiquetas
+                                                                    "3" ->{
+
+                                                                    }
+
+                                                                    //Todo log (não sei se é aqui mesmo)
+                                                                    "4" ->{
+
+                                                                    }
+
+                                                                    //Sair
+                                                                    "0" ->{
+                                                                        trello.fecharCartao()
+                                                                        println(terceiroMenu)
+                                                                        break@loop4
+                                                                    }
+
+                                                                    "h" -> println(quartoMenu)
+
+                                                                    else -> println("Opção inválida.")
+                                                                }
+                                                            }
+                                                        }
                                                     }
 
                                                     //Ver cartões (por título)
@@ -284,7 +342,7 @@ fun main(args: Array<String>) {
                                             }
                                         }
 
-                                        //Mover lista (mudar a posição)
+                                        //Todo Mover lista (mudar a posição)
                                         "5" ->{
 
                                         }
