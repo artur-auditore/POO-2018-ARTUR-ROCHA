@@ -94,4 +94,31 @@ class Lista(var nome: String){
 
     //Métodos referentes a comentários
 
+    fun comentar(comentario: String){
+        for (cartao in this.cartoes) if (cartao.isOpen()){
+            cartao.comentarios.add(comentario)
+        }
+    }
+
+    fun editarComentario(comentario: String, novoComentario: String){
+        for (cartao in this.cartoes) if (cartao.isOpen()){
+            cartao.comentarios.remove(comentario)
+            comentar(novoComentario)
+        }
+    }
+
+    fun excluirComentario(comentario: String){
+        for (cartao in this.cartoes) if (cartao.isOpen()){
+            cartao.comentarios.remove(comentario)
+        }
+    }
+
+    fun verComentarios(): String{
+        var dados = ""
+        for (i in 0 until  this.cartoes.size) if (this.cartoes[i].isOpen()){
+            dados += "${i+1}. ${this.cartoes[i]}"
+        }
+
+        return dados
+    }
 }

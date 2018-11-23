@@ -23,8 +23,4 @@ class Cartao(var titulo: String) {
     fun isOpen(): Boolean {
         return this.aberto
     }
-
-    fun comentar(comentario: String){
-        comentarios.add(comentario)
-    }
 }

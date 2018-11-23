@@ -260,4 +260,32 @@ class Usuario(var nome: String,
 
         return dados
     }
+
+    //Referente a comentários
+
+    fun comentar(comentario: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.comentar(comentario)
+        }
+    }
+
+    fun editarComentario(comentario: String, novoComentario: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.editarComentario(comentario, novoComentario)
+        }
+    }
+
+    fun excluirComentario(comentario: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.excluirComentario(comentario)
+        }
+    }
+
+    fun verComentarios(): String{
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            return quadro.verComentarios()
+        }
+
+        return ""
+    }
 }

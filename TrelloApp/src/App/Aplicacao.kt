@@ -162,7 +162,10 @@ fun main(args: Array<String>) {
 
                                                                 val quartoMenu = "1. Adicionar/Mudar descrição" +
                                                                         "\n2. Adicionar comentário" +
-                                                                        "\n3. Definir etiquetas" +
+                                                                        "\n3. Editar comentário" +
+                                                                        "\n4. Excluir comentário" +
+                                                                        "\n6. Ver comentários" +
+                                                                        "\n5. Definir etiquetas" +
                                                                         "\n0. Sair" +
                                                                         "\nPara obter ajuda pressione h"
 
@@ -183,10 +186,53 @@ fun main(args: Array<String>) {
 
                                                                             println("Novo comentário:")
                                                                             val comentario = readLine()!!.toString()
+                                                                            if (comentario.trim() == ""){
+                                                                                println("Comentário inválido." +
+                                                                                        "Tente novamente.")
+                                                                            } else {
+                                                                                trello.comentar(comentario)
+                                                                            }
                                                                         }
 
-                                                                        //Todo Definir etiquetas
+                                                                        //Editar comentário
                                                                         "3" ->{
+                                                                            println("Qual comentário deseja editar?")
+                                                                            println(trello.verComentarios())
+                                                                            val comment = readLine()!!.toString()
+                                                                            println("Novo comentário:")
+                                                                            val newComment = readLine()!!.toString()
+
+                                                                            if (comment.trim() == ""){
+                                                                                println("Inválido. Tente novamente.")
+                                                                            } else {
+                                                                                trello.editarComentario(comment,
+                                                                                    newComment)
+                                                                                println("Comentário editado")
+                                                                            }
+                                                                        }
+
+                                                                        //Excluir comentário
+                                                                        "4" -> {
+
+                                                                            println("Qual comentário deseja remover?")
+                                                                            println(trello.verComentarios())
+                                                                            val comment = readLine()!!.toString()
+
+                                                                            if (comment.trim() == ""){
+                                                                                println("Inválido. Tente novamente.")
+                                                                            } else {
+                                                                                trello.excluirComentario(comment)
+                                                                                println("Comentário excluído.")
+                                                                            }
+                                                                        }
+
+                                                                        //Ver Comentários
+                                                                        "6" ->{
+                                                                            
+                                                                            println(trello.verComentarios())
+                                                                        }
+                                                                        //Todo Definir etiquetas
+                                                                        "5" ->{
 
                                                                         }
 

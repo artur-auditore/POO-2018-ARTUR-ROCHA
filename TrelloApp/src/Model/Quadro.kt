@@ -159,4 +159,32 @@ class Quadro (var nome: String){
             lista.fecharCartao()
         }
     }
+
+    //Referente a comentarios
+
+    fun comentar(cometario: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.comentar(cometario)
+        }
+    }
+
+    fun editarComentario(comentario: String, novoComentario: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.editarComentario(comentario, novoComentario)
+        }
+    }
+
+    fun excluirComentario(comentario: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.excluirComentario(comentario)
+        }
+    }
+
+    fun verComentarios(): String{
+        for (lista in this.listas) if (lista.isOpen()){
+            return lista.verComentarios()
+        }
+
+        return ""
+    }
 }

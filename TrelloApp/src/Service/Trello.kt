@@ -242,4 +242,32 @@ open class Trello {
             usuario.moverCartao(titulo, tituloLista)
         }
     }
+
+    //Referente a comentários
+
+    fun comentar(comentario: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.comentar(comentario)
+        }
+    }
+
+    fun editarComentario(comentario: String, novoComentario: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.editarComentario(comentario, novoComentario)
+        }
+    }
+
+    fun excluirComentario(comentario: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.excluirComentario(comentario)
+        }
+    }
+
+    fun verComentarios(): String{
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            return usuario.verComentarios()
+        }
+
+        return "Não há comentários."
+    }
 }
