@@ -34,6 +34,7 @@ fun main(args: Array<String>) {
                             "\n5. Ver quadros arquivados" +
                             "\n6. Copiar" +
                             "\n7. Renomear" +
+                            "\n8. Logs" +
                             "\n0. Sair" +
                             "\nPara obter ajuda pressione h"
 
@@ -107,217 +108,247 @@ fun main(args: Array<String>) {
                                             println(trello.verListas())
                                             val nomeLista = readLine()!!.toString()
 
-                                            trello.abrirLista(nomeLista)
-                                            println("Lista aberta.")
+                                            if (nomeLista.trim() == "") {
+                                                println("Nome inválido.")
+                                            } else {
+                                                trello.abrirLista(nomeLista)
+                                                println("Lista aberta.")
+                                                val terceiroMenu = "1. Novo cartão" +
+                                                        "\n2. Abrir cartão" +
+                                                        "\n3. Ver Cartões" +
+                                                        "\n4. Copiar" +
+                                                        "\n5. Mover" +
+                                                        "\n6. Renomear" +
+                                                        "\n7. Arquivar" +
+                                                        "\n8. Ver cartões arquivados" +
+                                                        "\n0. Sair" +
+                                                        "\nPara obter ajuda pressione h"
 
-                                            val terceiroMenu = "1. Novo cartão" +
-                                                    "\n2. Abrir cartão" +
-                                                    "\n3. Ver Cartões" +
-                                                    "\n4. Copiar" +
-                                                    "\n5. Mover" +
-                                                    "\n6. Renomear" +
-                                                    "\n7. Arquivar" +
-                                                    "\n8. Ver cartões arquivados" +
-                                                    "\n0. Sair" +
-                                                    "\nPara obter ajuda pressione h"
+                                                println(terceiroMenu)
+                                                loop3@ while (true){
+                                                    print("Opção: ")
+                                                    val opcaoCartao = readLine()!!.toString()
 
-                                            println(terceiroMenu)
-                                            loop3@ while (true){
-                                                print("Opção: ")
-                                                val opcaoCartao = readLine()!!.toString()
+                                                    when(opcaoCartao){
 
-                                                when(opcaoCartao){
+                                                        //Novo cartão
+                                                        "1" ->{
 
-                                                    //Novo cartão
-                                                    "1" ->{
-
-                                                        println("Título:")
-                                                        val tituloCartao = readLine()!!.toString()
-                                                        println("Descrição")
-                                                        val descCartao = readLine()!!.toString()
-                                                        if (tituloCartao.trim() == ""){
-                                                            println("Forneça um título inválido")
-                                                        } else {
-                                                            trello.novoCartao(tituloCartao, descCartao)
-                                                            println("$tituloCartao criado")
+                                                            println("Título:")
+                                                            val tituloCartao = readLine()!!.toString()
+                                                            println("Descrição")
+                                                            val descCartao = readLine()!!.toString()
+                                                            if (tituloCartao.trim() == ""){
+                                                                println("Forneça um título inválido")
+                                                            } else {
+                                                                trello.novoCartao(tituloCartao, descCartao)
+                                                                println("$tituloCartao criado")
+                                                            }
                                                         }
-                                                    }
 
-                                                    //Todo Abrir cartão (para editar também)
-                                                    "2" ->{
+                                                        //Todo Abrir cartão (para editar também)
+                                                        "2" ->{
 
-                                                        println("Qual cartão deseja abrir?")
-                                                        println(trello.verCartoes())
-                                                        val tituloCartao = readLine()!!.toString()
+                                                            println("Qual cartão deseja abrir?")
+                                                            println(trello.verCartoes())
+                                                            val tituloCartao = readLine()!!.toString()
 
-                                                        if (tituloCartao.trim() == ""){
-                                                            println("Tente novamente com um nome válido.")
-                                                        } else{
+                                                            if (tituloCartao.trim() == ""){
+                                                                println("Tente novamente com um nome válido.")
+                                                            } else{
 
-                                                            trello.abrirCartao(tituloCartao)
-                                                            println("Cartão aberto.")
+                                                                trello.abrirCartao(tituloCartao)
+                                                                println("Cartão aberto.")
 
-                                                            val quartoMenu = "1. Adicionar/Mudar descrição" +
-                                                                    "\n2. Adicionar comentário" +
-                                                                    "\n3. Definir etiquetas" +
-                                                                    "\n4. Log" + //não sei se é aqui mesmo
-                                                                    "\n0. Sair" +
-                                                                    "\nPara obter ajuda pressione h"
+                                                                val quartoMenu = "1. Adicionar/Mudar descrição" +
+                                                                        "\n2. Adicionar comentário" +
+                                                                        "\n3. Definir etiquetas" +
+                                                                        "\n0. Sair" +
+                                                                        "\nPara obter ajuda pressione h"
 
-                                                            println(quartoMenu)
-                                                            loop4@ while (true){
-                                                                print("Opção: ")
-                                                                val opc = readLine()!!.toString()
+                                                                println(quartoMenu)
+                                                                loop4@ while (true){
+                                                                    print("Opção: ")
+                                                                    val opc = readLine()!!.toString()
 
-                                                                when(opc){
+                                                                    when(opc){
 
-                                                                    //Todo Adicionar/Mudar descrição
-                                                                    "1" ->{
+                                                                        //Todo Adicionar/Mudar descrição
+                                                                        "1" ->{
 
+                                                                        }
+
+                                                                        //Todo Adicionar Comentário
+                                                                        "2" ->{
+
+                                                                            println("Novo comentário:")
+                                                                            val comentario = readLine()!!.toString()
+                                                                        }
+
+                                                                        //Todo Definir etiquetas
+                                                                        "3" ->{
+
+                                                                        }
+
+                                                                        //Sair
+                                                                        "0" ->{
+                                                                            trello.fecharCartao()
+                                                                            println(terceiroMenu)
+                                                                            break@loop4
+                                                                        }
+
+                                                                        "h" -> println(quartoMenu)
+
+                                                                        else -> println("Opção inválida.")
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                        //Ver cartões (por título)
+                                                        "3" ->{
+                                                            println(trello.verCartoes())
+                                                        }
+
+                                                        //Copiar cartão
+                                                        "4" ->{
+
+                                                            println("Escolha um cartão:")
+                                                            println(trello.verCartoes())
+                                                            val tituloCartao = readLine()!!.toString()
+
+                                                            if (tituloCartao.trim() == "") {
+                                                                println("Forneça um título válido.")
+                                                            } else {
+                                                                println("Para onde deseja copiar $tituloCartao?" +
+                                                                        "\n1. Mesma lista" +
+                                                                        "\n2. Outra lista" +
+                                                                        "\n3. Outro lista de outro quadro")
+
+                                                                val opcaoCopiar = readLine()!!.toString()
+                                                                when (opcaoCopiar){
+
+                                                                    //Copia para a mesma lista
+                                                                    "1" -> {
+                                                                        trello.copiarCartao(tituloCartao)
+                                                                        println("$tituloCartao copiado.")
                                                                     }
 
-                                                                    //Todo Adicionar Comentário
+                                                                    //Copia para outra lista do mesmo quadro
                                                                     "2" ->{
+                                                                        println("Deseja copiar para qual lista?")
+                                                                        println(trello.verListas())
+                                                                        val tituloLista = readLine()!!.toString()
 
+                                                                        trello.copiarCartao(tituloCartao, tituloLista)
+                                                                        println("$tituloCartao copiado.")
                                                                     }
 
-                                                                    //Todo Definir etiquetas
+                                                                    //Escolhe um quadro e uma lista para copiar o cartão
                                                                     "3" ->{
+                                                                        println("Deseja copiar para qual quadro?")
+                                                                        println(trello.verQuadros())
+                                                                        val tituloQuadro = readLine()!!.toString()
+                                                                        println("Escolha a lista de destino:")
+                                                                        println(trello.verListas(tituloQuadro))
+                                                                        val tituloLista = readLine()!!.toString()
 
+                                                                        trello.copiarCartao(tituloCartao, tituloLista,
+                                                                            tituloQuadro)
+                                                                        println("$tituloCartao copiado.")
                                                                     }
-
-                                                                    //Todo log (não sei se é aqui mesmo)
-                                                                    "4" ->{
-
-                                                                    }
-
-                                                                    //Sair
-                                                                    "0" ->{
-                                                                        trello.fecharCartao()
-                                                                        println(terceiroMenu)
-                                                                        break@loop4
-                                                                    }
-
-                                                                    "h" -> println(quartoMenu)
 
                                                                     else -> println("Opção inválida.")
                                                                 }
                                                             }
                                                         }
-                                                    }
 
-                                                    //Ver cartões (por título)
-                                                    "3" ->{
-                                                        println(trello.verCartoes())
-                                                    }
+                                                        //Todo Mover
+                                                        "5" ->{
 
-                                                    //Copiar cartão
-                                                    "4" ->{
+                                                            println("Escolha um cartão:")
+                                                            println(trello.verCartoes())
+                                                            val tituloCartao = readLine()!!.toString()
 
-                                                        println("Escolha um cartão:")
-                                                        println(trello.verCartoes())
-                                                        val tituloCartao = readLine()!!.toString()
-                                                        if (tituloCartao.trim() == "") {
-                                                            println("Forneça um título válido.")
-                                                        } else {
-                                                            println("Para onde deseja copiar $tituloCartao?" +
-                                                                    "\n1. Mesma lista" +
-                                                                    "\n2. Outra lista" +
-                                                                    "\n3. Outro lista de outro quadro")
+                                                            if (tituloCartao.trim() == ""){
+                                                                println("Tente novamente com um título válido.")
+                                                            } else {
+                                                                println("Para onde deseja mover $tituloCartao?" +
+                                                                        "\n1. Mesma lista" +
+                                                                        "\n2. Outra lista" +
+                                                                        "\n3. Outro lista de outro quadro")
+                                                                print("Opção: ")
+                                                                val opcaoMover = readLine()!!.toString()
+                                                                when(opcaoMover){
 
-                                                            val opcaoCopiar = readLine()!!.toString()
-                                                            when (opcaoCopiar){
+                                                                    "1" ->{
 
-                                                                //Copia para a mesma lista
-                                                                "1" -> {
-                                                                    trello.copiarCartao(tituloCartao)
-                                                                    println("$tituloCartao copiado.")
+                                                                    }
+
+                                                                    "2" ->{
+
+                                                                    }
+
+                                                                    "3" ->{
+
+                                                                    }
+
+                                                                    else -> println("Opção inválida")
                                                                 }
-
-                                                                //Copia para outra lista do mesmo quadro
-                                                                "2" ->{
-                                                                    println("Deseja copiar para qual lista?")
-                                                                    println(trello.verListas())
-                                                                    val tituloLista = readLine()!!.toString()
-
-                                                                    trello.copiarCartao(tituloCartao, tituloLista)
-                                                                    println("$tituloCartao copiado.")
-                                                                }
-
-                                                                //Escolhe um quadro e uma lista para copiar o cartão
-                                                                "3" ->{
-                                                                    println("Deseja copiar para qual quadro?")
-                                                                    println(trello.verQuadros())
-                                                                    val tituloQuadro = readLine()!!.toString()
-                                                                    println("Escolha a lista de destino:")
-                                                                    println(trello.verListas(tituloQuadro))
-                                                                    val tituloLista = readLine()!!.toString()
-
-                                                                    trello.copiarCartao(tituloCartao, tituloLista,
-                                                                        tituloQuadro)
-                                                                    println("$tituloCartao copiado.")
-                                                                }
-
-                                                                else -> println("Opção inválida.")
                                                             }
                                                         }
-                                                    }
 
-                                                    //Todo Mover
-                                                    "5" ->{
+                                                        //Renomear Cartão
+                                                        "6" ->{
+                                                            println("Qual cartão deseja renomear?")
+                                                            println(trello.verCartoes())
+                                                            val tituloCartao = readLine()!!.toString()
+                                                            println("Atribua um novo título:")
+                                                            val novoTitulo = readLine()!!.toString()
 
-                                                    }
-
-                                                    //Renomear Cartão
-                                                    "6" ->{
-                                                        println("Qual cartão deseja renomear?")
-                                                        println(trello.verCartoes())
-                                                        val tituloCartao = readLine()!!.toString()
-                                                        println("Atribua um novo título:")
-                                                        val novoTitulo = readLine()!!.toString()
-
-                                                        if (tituloCartao.trim() == "" || novoTitulo.trim() == ""){
-                                                            println("Tente novamente com um título válido.")
-                                                        } else {
-                                                            trello.renomearCartao(tituloCartao, novoTitulo)
-                                                            println("Renomeado.")
+                                                            if (tituloCartao.trim() == "" || novoTitulo.trim() == ""){
+                                                                println("Tente novamente com um título válido.")
+                                                            } else {
+                                                                trello.renomearCartao(tituloCartao, novoTitulo)
+                                                                println("Renomeado.")
+                                                            }
                                                         }
-                                                    }
 
-                                                    //Arquivar cartão
-                                                    "7" ->{
+                                                        //Arquivar cartão
+                                                        "7" ->{
 
-                                                        println("Escolha um cartão para arquivar:")
-                                                        println(trello.verCartoes())
-                                                        val titulo = readLine()!!.toString()
+                                                            println("Escolha um cartão para arquivar:")
+                                                            println(trello.verCartoes())
+                                                            val titulo = readLine()!!.toString()
 
-                                                        if (titulo.trim() == ""){
-                                                            println("Forneça um título válido.")
-                                                        } else {
-                                                            trello.arquivarCartao(titulo)
-                                                            println("$titulo arquivado.")
+                                                            if (titulo.trim() == ""){
+                                                                println("Forneça um título válido.")
+                                                            } else {
+                                                                trello.arquivarCartao(titulo)
+                                                                println("$titulo arquivado.")
+                                                            }
                                                         }
+
+                                                        //Lista por nome os cartões arquivados
+                                                        "8" ->{
+                                                            println(trello.verCartoesArquivados())
+                                                        }
+
+                                                        //Lista por nome todos os cartões
+                                                        "9" ->{
+
+                                                        }
+
+                                                        "0" -> {
+                                                            trello.fecharLista()
+                                                            println(segundoMenu)
+                                                            break@loop3
+                                                        }
+
+                                                        "h" -> println(terceiroMenu)
+
+                                                        else -> println("Opção inválida.")
                                                     }
-
-                                                    //Lista por nome os cartões arquivados
-                                                    "8" ->{
-                                                        println(trello.verCartoesArquivados())
-                                                    }
-
-                                                    //Lista por nome todos os cartões
-                                                    "9" ->{
-
-                                                    }
-
-                                                    "0" -> {
-                                                        trello.fecharLista()
-                                                        println(segundoMenu)
-                                                        break@loop3
-                                                    }
-
-                                                    "h" -> println(terceiroMenu)
-
-                                                    else -> println("Opção inválida.")
                                                 }
                                             }
                                         }
@@ -345,6 +376,18 @@ fun main(args: Array<String>) {
                                         //Todo Mover lista (mudar a posição)
                                         "5" ->{
 
+                                            println("Qual lista deseja mover a posição?")
+                                            println(trello.verListas())
+                                            val titulo = readLine()!!.toString()
+                                            println("Escolha a posição:")
+                                            val posicao = readLine()!!.toInt()
+
+                                            if (titulo.trim() == "" || posicao.toString().trim() == ""){
+                                                println("Tente novamente com titúlo ou posição válida.")
+                                            } else {
+                                                trello.moverLista(titulo, posicao)
+                                                println("Lista movida.")
+                                            }
                                         }
 
                                         //Renomear
@@ -450,6 +493,12 @@ fun main(args: Array<String>) {
                                     trello.renomearQuadro(titulo, novoTitulo)
                                     println("Renomeado.")
                                 }
+                            }
+
+                            //Ver Logs
+                            "8" ->{
+
+                                println(trello.verLogs())
                             }
 
                             "h" -> println(primeroMenu)

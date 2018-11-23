@@ -22,6 +22,8 @@ class Lista(var nome: String){
         return this.arquivada
     }
 
+    //Métodos referentes a cartão
+
     fun novoCartao(titulo: String, descricao: String){
         val cartao = Cartao(titulo)
         cartao.descricao = descricao
@@ -30,8 +32,8 @@ class Lista(var nome: String){
 
     fun verCartoes(): String{
         var dados = ""
-        for (cartao in this.cartoes) if (!cartao.estaArquivado()){
-            dados += "${cartao.titulo}\n"
+        for (i in 0 until  this.cartoes.size) if (!this.cartoes[i].estaArquivado()){
+            dados += "$i. ${this.cartoes[i].titulo}\n"
         }
         return dados
     }
@@ -46,6 +48,17 @@ class Lista(var nome: String){
         this.cartoes.add(cartaoCopiado)
     }
 
+    fun moverCartao(titulo: String){
+        var cartaoCopiado = Cartao(titulo)
+
+        for (cartao in this.cartoes) if (cartao.titulo == titulo){
+            cartaoCopiado = cartao
+            this.cartoes.remove(cartao)
+        }
+
+        this.cartoes.add(cartaoCopiado)
+    }
+
     fun arquivarCartao(titulo: String){
         for (cartao in this.cartoes) if (cartao.titulo == titulo){
             cartao.arquivado = true
@@ -54,8 +67,8 @@ class Lista(var nome: String){
 
     fun verCartoesArquivados(): String{
         var dados = ""
-        for (cartao in this.cartoes) if (cartao.estaArquivado()){
-            dados += "${cartao.titulo}\n"
+        for (i in 0 until  this.cartoes.size) if (this.cartoes[i].estaArquivado()){
+            dados += "$i. ${this.cartoes[i].titulo}\n"
         }
 
         return dados
@@ -78,5 +91,7 @@ class Lista(var nome: String){
             cartao.fechar()
         }
     }
+
+    //Métodos referentes a comentários
 
 }

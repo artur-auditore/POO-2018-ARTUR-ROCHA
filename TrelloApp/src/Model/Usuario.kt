@@ -8,6 +8,7 @@ class Usuario(var nome: String,
     lateinit var username: String
     private var logado = false
     private var quadros = arrayListOf<Quadro>()
+    var logs = arrayListOf<String>()
 
     fun logar(): Boolean {
         this.logado = true
@@ -22,9 +23,13 @@ class Usuario(var nome: String,
         return this.logado
     }
 
+    //Métodos referentes a quadros
+
     fun novoQuadro(titulo: String){
         val quadro = Quadro(titulo)
         this.quadros.add(quadro)
+
+        this.logs.add("$nome criou o quadro $titulo.")
     }
 
     fun abrirQuadro(titulo: String){
@@ -37,20 +42,22 @@ class Usuario(var nome: String,
         for (quadro in this.quadros) if (quadro.nome == titulo){
             quadro.arquivado = true
         }
+
+        this.logs.add("$nome arquivou o quadro $titulo.")
     }
 
     fun verQuadros():String{
         var dados = ""
-        for (quadro in this.quadros) if (!quadro.estaArquivado()){
-            dados += "${quadro.nome}\n"
+        for (i in 0 until this.quadros.size) if (!quadros[i].estaArquivado()){
+            dados += "$i. ${this.quadros[i].nome}\n"
         }
         return dados
     }
 
     fun verQuadrosArquivados(): String{
         var dados = ""
-        for (quadro in this.quadros) if (quadro.estaArquivado()){
-            dados += "${quadro.nome}\n"
+        for (i in 0 until this.quadros.size) if (this.quadros[i].estaArquivado()){
+            dados += "$i. ${this.quadros[i].nome}\n"
         }
         return dados
     }
@@ -91,9 +98,13 @@ class Usuario(var nome: String,
         }
     }
 
+    //Métodos referentes a listas
+
     fun novaLista(titulo: String){
-        for (quadro in this.quadros) if (quadro.isOpen())
+        for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.novaLista(titulo)
+            this.logs.add("$nome adicionou $titulo a ${quadro.nome}.")
+        }
     }
 
     fun abrirLista(titulo: String){
@@ -122,7 +133,9 @@ class Usuario(var nome: String,
     fun arquvarLista(titulo: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.arquivarLista(titulo)
+            this.logs.add("$nome arquivou a lista $titulo do quadro ${quadro.nome}")
         }
+
     }
 
     fun verListasArquivadas(): String{
@@ -137,6 +150,8 @@ class Usuario(var nome: String,
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.copiarLista(titulo)
         }
+
+        this.logs.add("$nome copiou a lista $titulo.")
     }
 
     fun renomearLista(titulo: String, novoTitulo: String){
@@ -145,9 +160,27 @@ class Usuario(var nome: String,
         }
     }
 
+    fun moverLista(titulo: String, posicao: Int){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.moverLista(titulo, posicao)
+        }
+
+        this.logs.add("$nome moveu a lista $titulo.")
+    }
+
+    fun fecharLista() {
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.fecharLista()
+        }
+    }
+
+    //Métodos referentes a cartões
+
     fun novoCartao(titulo: String, descricao: String){
-        for (quadro in this.quadros) if (quadro.isOpen())
+        for (quadro in this.quadros) if (quadro.isOpen()) {
             quadro.novoCartao(titulo, descricao)
+            this.logs.add("$nome adicionou $titulo a ${quadro.nome}.")
+        }
     }
 
     fun verCartoes(): String{
@@ -161,24 +194,28 @@ class Usuario(var nome: String,
     fun copiarCartao(titulo: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.copiarCartao(titulo)
+            this.logs.add("$nome copiou $titulo para a mesma lista.")
         }
     }
 
     fun copiarCartao(titulo: String, nomeLista: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.copiarCartao(titulo, nomeLista)
+            this.logs.add("$nome copiou $titulo para a lista $nomeLista.")
         }
     }
 
     fun copiarCartao(titulo: String, nomeLista: String, nomeQuadro: String){
         for (quadro in this.quadros) if (quadro.nome == nomeQuadro){
             quadro.copiarCartao(titulo, nomeLista)
+            this.logs.add("$nome copiou $titulo para a lista $nomeLista do quadro $nomeQuadro.")
         }
     }
 
     fun arquivarCartao(titulo: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.arquivarCartao(titulo)
+            this.logs.add("$nome arquivou o cartão $titulo.")
         }
     }
 
@@ -193,6 +230,7 @@ class Usuario(var nome: String,
     fun renomearCartao(titulo: String, novoTitulo: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.renomearCartao(titulo, novoTitulo)
+            this.logs.add("$nome mudou o título de $titulo para $novoTitulo.")
         }
     }
 
@@ -208,9 +246,18 @@ class Usuario(var nome: String,
         }
     }
 
-    fun fecharLista() {
+    fun moverCartao(titulo: String, tituloLista: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
-            quadro.fecharLista()
+            quadro.moverCartao(titulo, tituloLista)
+            this.logs.add("$nome moveu $titulo para a lista $tituloLista.")
         }
+    }
+
+    fun verLogs(): String{
+        var dados = ""
+        for (i in 0 until this.logs.size)
+            dados+="${i+1}. ${logs[i]}\n"
+
+        return dados
     }
 }

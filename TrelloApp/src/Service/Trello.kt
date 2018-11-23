@@ -3,10 +3,10 @@ package Service
 import Model.Usuario
 import java.lang.StringBuilder
 
-class Trello {
+open class Trello {
 
-    private var usuarios = arrayListOf<Usuario>()
-
+    var usuarios = arrayListOf<Usuario>()
+    var logs = arrayListOf<String>()
     //Metodos para criação e login de usuário
 
     fun novoCadastro(nome: String, email: String, senha: String) {
@@ -26,8 +26,11 @@ class Trello {
     }
 
     fun gerarUsername(nome: String): String {
-        val username = StringBuilder(); username.append(nome.toLowerCase() + "12")
+
+        val username = StringBuilder()
+        username.append(nome.toLowerCase()+"3")
         return username.toString()
+
     }
 
     fun logout() {
@@ -38,10 +41,11 @@ class Trello {
 
     //Métodos específicos para operações com quadros
 
-    fun novoQuadro(titulo: String) {
+    fun novoQuadro(titulo: String){
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.novoQuadro(titulo)
         }
+
     }
 
     fun abrirQuadro(titulo: String) {
@@ -89,18 +93,28 @@ class Trello {
         }
     }
 
+    fun verLogs(): String{
+        for (usuario in usuarios) if (usuario.isLogged()){
+            return usuario.verLogs()
+        }
+
+        return "Nada."
+    }
+
     //Métodos específicos para operações com listas
 
     fun novaLista(titulo: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.novaLista(titulo)
         }
+
     }
 
-    fun abrirLista(titulo: String) {
+    fun abrirLista(titulo: String){
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.abrirLista(titulo)
         }
+
     }
 
     fun fecharLista() {
@@ -151,12 +165,19 @@ class Trello {
         }
     }
 
+    fun moverLista(titulo: String, posicao: Int){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.moverLista(titulo, posicao)
+        }
+    }
+
     //Métodos específicos para operações com cartões
 
     fun novoCartao(titulo: String, descricao: String) {
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.novoCartao(titulo, descricao)
         }
+
     }
 
     fun verCartoes(): String {
@@ -213,6 +234,12 @@ class Trello {
     fun fecharCartao(){
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.fecharCartao()
+        }
+    }
+
+    fun moverCartao(titulo: String, tituloLista: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.moverCartao(titulo, tituloLista)
         }
     }
 }

@@ -22,6 +22,8 @@ class Quadro (var nome: String){
         return this.arquivado
     }
 
+    //Métodos referentes a listas
+
     fun novaLista(nome: String){
         val lista = Lista(nome)
         this.listas.add(lista)
@@ -35,8 +37,8 @@ class Quadro (var nome: String){
 
     fun verListas():String{
         var dados = ""
-        for (lista in this.listas) if (!lista.estaArquivada()){
-            dados += "${lista.nome}\n"
+        for (i in 0 until this.listas.size) if (!this.listas[i].estaArquivada()){
+            dados += "$i. ${this.listas[i].nome}\n"
         }
         return dados
     }
@@ -55,8 +57,8 @@ class Quadro (var nome: String){
 
     fun verListasArquivadas(): String {
         var dados = ""
-        for (lista in this.listas) if (lista.estaArquivada()){
-            dados += "${lista.nome}\n"
+        for (i in 0 until this.listas.size) if (this.listas[i].estaArquivada()){
+            dados += "$i. ${this.listas[i].nome}\n"
         }
         return dados
     }
@@ -66,6 +68,31 @@ class Quadro (var nome: String){
             lista.nome = novoTitulo
         }
     }
+
+    fun copiarLista(titulo: String){
+        val listaCopiada = Lista(titulo)
+
+        for (lista in this.listas) if (lista.nome == titulo){
+            for (cartao in lista.cartoes) listaCopiada.cartoes.add(cartao)
+        }
+
+        this.listas.add(listaCopiada)
+    }
+
+    fun moverLista(titulo: String, posicao: Int){
+        val listTemp = arrayListOf<Lista>()
+
+        for (lista in this.listas) if (lista.nome == titulo){
+            listTemp.add(lista)
+            this.listas.remove(lista)
+        }
+        //não funciona ainda
+        for (i in posicao downTo 0)
+            this.listas[i+1] = this.listas[i]
+        this.listas[posicao] = listTemp[0]
+    }
+
+    //Métodos referentes a cartões
 
     fun novoCartao(titulo: String, descricao: String){
         for (lista in this.listas) if (lista.isOpen()){
@@ -93,6 +120,12 @@ class Quadro (var nome: String){
             lista.copiarCartao(titulo)
         }
 
+    }
+
+    fun moverCartao(titulo: String, tituloLista: String){
+        for (lista in this.listas) if (lista.nome == tituloLista){
+            lista.moverCartao(titulo)
+        }
     }
 
     fun arquivarCartao(titulo: String){
@@ -126,15 +159,4 @@ class Quadro (var nome: String){
             lista.fecharCartao()
         }
     }
-
-    fun copiarLista(titulo: String){
-        val listaCopiada = Lista(titulo)
-
-        for (lista in this.listas) if (lista.nome == titulo){
-            for (cartao in lista.cartoes) listaCopiada.cartoes.add(cartao)
-        }
-
-        this.listas.add(listaCopiada)
-    }
-
 }

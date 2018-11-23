@@ -6,7 +6,7 @@ class Cartao(var titulo: String) {
     var arquivado = false
     var aberto = false
     var etiquetas = arrayListOf<Etiqueta>()
-    var comentarios = arrayListOf<Comentario>()
+    var comentarios = arrayListOf<String>()
 
     fun estaArquivado(): Boolean {
         return this.arquivado
@@ -22,5 +22,9 @@ class Cartao(var titulo: String) {
 
     fun isOpen(): Boolean {
         return this.aberto
+    }
+
+    fun comentar(comentario: String){
+        comentarios.add(comentario)
     }
 }
