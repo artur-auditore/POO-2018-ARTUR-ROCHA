@@ -146,7 +146,7 @@ fun main(args: Array<String>) {
                                                             }
                                                         }
 
-                                                        //Todo Abrir cartão (para editar também)
+                                                        // Abrir cartão (para editar também)
                                                         "2" ->{
 
                                                             println("Qual cartão deseja abrir?")
@@ -176,12 +176,21 @@ fun main(args: Array<String>) {
 
                                                                     when(opc){
 
-                                                                        //Todo Adicionar/Mudar descrição
+                                                                        //Adicionar/Mudar descrição
                                                                         "1" ->{
+                                                                            println("Nova descrição:")
+                                                                            val descricao = readLine()!!.toString()
 
+                                                                            if (descricao.trim() == ""){
+                                                                                println("Erro. Tente Novamente.")
+                                                                            } else {
+                                                                                trello.addOrChangeDescription(descricao)
+                                                                                println("Descrição adicionada/" +
+                                                                                        "alterada.")
+                                                                            }
                                                                         }
 
-                                                                        //Todo Adicionar Comentário
+                                                                        //Adicionar Comentário
                                                                         "2" ->{
 
                                                                             println("Novo comentário:")
@@ -228,7 +237,7 @@ fun main(args: Array<String>) {
 
                                                                         //Ver Comentários
                                                                         "6" ->{
-                                                                            
+
                                                                             println(trello.verComentarios())
                                                                         }
                                                                         //Todo Definir etiquetas
@@ -325,6 +334,7 @@ fun main(args: Array<String>) {
                                                                         "\n3. Outro lista de outro quadro")
                                                                 print("Opção: ")
                                                                 val opcaoMover = readLine()!!.toString()
+
                                                                 when(opcaoMover){
 
                                                                     "1" ->{

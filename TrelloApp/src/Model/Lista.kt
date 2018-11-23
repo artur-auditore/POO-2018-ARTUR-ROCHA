@@ -86,6 +86,12 @@ class Lista(var nome: String){
         }
     }
 
+    fun addOrChangeDescription(descricao: String){
+        for (cartao in this.cartoes) if (cartao.isOpen()){
+            cartao.descricao = descricao
+        }
+    }
+
     fun fecharCartao(){
         for (cartao in this.cartoes) if (cartao.isOpen()){
             cartao.fechar()

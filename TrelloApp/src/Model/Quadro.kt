@@ -154,6 +154,12 @@ class Quadro (var nome: String){
         }
     }
 
+    fun addOrChangeDescription(descricao: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.addOrChangeDescription(descricao)
+        }
+    }
+
     fun fecharCartao(){
         for (lista in this.listas) if (lista.isOpen()){
             lista.fecharCartao()

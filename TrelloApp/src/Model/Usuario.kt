@@ -240,6 +240,12 @@ class Usuario(var nome: String,
         }
     }
 
+    fun addOrChangeDescription(descricao: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.addOrChangeDescription(descricao)
+        }
+    }
+
     fun fecharCartao(){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.fecharCartao()

@@ -231,6 +231,12 @@ open class Trello {
         }
     }
 
+    fun addOrChangeDescription(descricao: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.addOrChangeDescription(descricao)
+        }
+    }
+
     fun fecharCartao(){
         for (usuario in usuarios) if (usuario.isLogged()) {
             usuario.fecharCartao()
