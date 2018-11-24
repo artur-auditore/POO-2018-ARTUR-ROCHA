@@ -1,0 +1,4 @@
+Algumas das funcionalidades não estão completas:
+
+- Copiar quadros com listas vazias
+- Mover listas e cartões de posição
