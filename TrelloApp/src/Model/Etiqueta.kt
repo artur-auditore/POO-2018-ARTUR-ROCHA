@@ -1,7 +1,4 @@
 package Model
 
-class Etiqueta {
-
-    lateinit var descricao: String
-    lateinit var cor: String
-}
+class Etiqueta (var descricao: String,
+                var cor: String)

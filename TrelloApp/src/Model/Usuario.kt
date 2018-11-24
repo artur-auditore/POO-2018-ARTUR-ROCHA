@@ -57,7 +57,7 @@ class Usuario(var nome: String,
     fun verQuadrosArquivados(): String{
         var dados = ""
         for (i in 0 until this.quadros.size) if (this.quadros[i].estaArquivado()){
-            dados += "$i. ${this.quadros[i].nome}\n"
+            dados += "${i+1}. ${this.quadros[i].nome}\n"
         }
         return dados
     }
@@ -90,12 +90,14 @@ class Usuario(var nome: String,
             for (lista in quadroCopiado.listas) lista.cartoes.clear()
             this.quadros.add(quadroCopiado)
         }
+        this.logs.add("$nome copiou $titulo para $novoTitulo.")
     }
 
     fun renomearQuadro(titulo: String, novoTitulo: String){
         for (quadro in this.quadros) if (quadro.nome == titulo){
             quadro.nome = novoTitulo
         }
+        this.logs.add("$nome renomeou $titulo para $novoTitulo.")
     }
 
     //Métodos referentes a listas
@@ -259,6 +261,12 @@ class Usuario(var nome: String,
         }
     }
 
+    fun moverCartao(titulo: String, tituloLista: String, tituloQuadro: String){
+        for (quadro in this.quadros) if (quadro.nome == tituloQuadro) {
+            quadro.moverCartao(titulo, tituloLista)
+        }
+    }
+
     fun verLogs(): String{
         var dados = ""
         for (i in 0 until this.logs.size)
@@ -272,6 +280,7 @@ class Usuario(var nome: String,
     fun comentar(comentario: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.comentar(comentario)
+            this.logs.add("$nome comentou em um cartão do quadro ${quadro.nome}.")
         }
     }
 
@@ -284,6 +293,7 @@ class Usuario(var nome: String,
     fun excluirComentario(comentario: String){
         for (quadro in this.quadros) if (quadro.isOpen()){
             quadro.excluirComentario(comentario)
+            this.logs.remove("$nome comentou em um cartão do quadro ${quadro.nome}.")
         }
     }
 
@@ -293,5 +303,19 @@ class Usuario(var nome: String,
         }
 
         return ""
+    }
+
+    //Métodos para etiquetas
+
+    fun definirEtiquetas(cor: String, descricao: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.definirEtiqueta(cor, descricao)
+        }
+    }
+
+    fun excluirEtiqueta(etiqueta: String, titulo: String){
+        for (quadro in this.quadros) if (quadro.isOpen()){
+            quadro.excluirEtiqueta(etiqueta, titulo)
+        }
     }
 }

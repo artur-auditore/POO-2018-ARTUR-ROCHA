@@ -1,12 +1,13 @@
 package Service
 
+import Model.Etiqueta
 import Model.Usuario
 import java.lang.StringBuilder
 
 open class Trello {
 
     var usuarios = arrayListOf<Usuario>()
-    var logs = arrayListOf<String>()
+    var cores = arrayListOf("Amarelo", "Verde", "Laranja", "Vermelho", "Roxo", "Azul")
     //Metodos para criação e login de usuário
 
     fun novoCadastro(nome: String, email: String, senha: String) {
@@ -70,7 +71,7 @@ open class Trello {
         for (usuario in usuarios) if (usuario.isLogged())
             return usuario.verQuadros()
 
-        return "Não há quadros."
+        return ""
     }
 
     fun verQuadrosArquivados(): String{
@@ -78,7 +79,7 @@ open class Trello {
             return usuario.verQuadrosArquivados()
         }
 
-        return "Não há quadros."
+        return ""
     }
 
     fun copiarQuadro(titulo: String, novoTitulo: String, opc: String){
@@ -98,7 +99,7 @@ open class Trello {
             return usuario.verLogs()
         }
 
-        return "Nada."
+        return ""
     }
 
     //Métodos específicos para operações com listas
@@ -216,7 +217,7 @@ open class Trello {
         for (usuario in usuarios) if (usuario.isLogged()) {
             return usuario.verCartoesArquivados()
         }
-        return "Não há cartões no arquivo"
+        return ""
     }
 
     fun renomearCartao(titulo: String, novoTitulo: String){
@@ -249,6 +250,12 @@ open class Trello {
         }
     }
 
+    fun moverCartao(titulo: String, tituloLista: String, tituloQuadro: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.moverCartao(titulo, tituloLista, tituloQuadro)
+        }
+    }
+
     //Referente a comentários
 
     fun comentar(comentario: String){
@@ -274,6 +281,28 @@ open class Trello {
             return usuario.verComentarios()
         }
 
-        return "Não há comentários."
+        return ""
+    }
+
+    //Métodos para etiquetas
+
+    fun definirEtiqueta(index: Int, descricao: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.definirEtiquetas(this.cores[index], descricao)
+        }
+    }
+
+    fun listarEtiquetas(): String{
+        var dados = ""
+        for (i in 0 until this.cores.size)
+            dados += "${i+1}. ${this.cores[i]}\n"
+
+        return dados
+    }
+
+    fun excluirEtiquera(etiqueta: String, titulo: String){
+        for (usuario in usuarios) if (usuario.isLogged()) {
+            usuario.excluirEtiqueta(etiqueta, titulo)
+        }
     }
 }

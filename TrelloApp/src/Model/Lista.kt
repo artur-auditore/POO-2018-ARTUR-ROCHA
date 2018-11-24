@@ -33,7 +33,7 @@ class Lista(var nome: String){
     fun verCartoes(): String{
         var dados = ""
         for (i in 0 until  this.cartoes.size) if (!this.cartoes[i].estaArquivado()){
-            dados += "$i. ${this.cartoes[i].titulo}\n"
+            dados += "${i+1}. ${this.cartoes[i].titulo}\n"
         }
         return dados
     }
@@ -68,7 +68,7 @@ class Lista(var nome: String){
     fun verCartoesArquivados(): String{
         var dados = ""
         for (i in 0 until  this.cartoes.size) if (this.cartoes[i].estaArquivado()){
-            dados += "$i. ${this.cartoes[i].titulo}\n"
+            dados += "${i+1}. ${this.cartoes[i].titulo}\n"
         }
 
         return dados
@@ -120,11 +120,25 @@ class Lista(var nome: String){
     }
 
     fun verComentarios(): String{
-        var dados = ""
-        for (i in 0 until  this.cartoes.size) if (this.cartoes[i].isOpen()){
-            dados += "${i+1}. ${this.cartoes[i]}"
+        for (cartao in this.cartoes) if (cartao.isOpen()){
+            return cartao.verComentarios()
         }
 
-        return dados
+        return ""
+    }
+
+    //Métodos para Etiquetas
+
+    fun definirEtiquetas(cor: String, descricao: String){
+        for (cartao in this.cartoes) if (cartao.isOpen()){
+            cartao.definirEtiqueta(cor, descricao)
+        }
+    }
+
+    fun excluirEtiqueta(etiqueta: String, tituloCartao: String){
+        for (cartao in this.cartoes) if (cartao.titulo == tituloCartao){
+            for (et in cartao.etiquetas) if (et.cor == etiqueta)
+            cartao.etiquetas.remove(et)
+        }
     }
 }

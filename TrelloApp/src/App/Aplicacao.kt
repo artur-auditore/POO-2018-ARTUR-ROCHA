@@ -164,8 +164,9 @@ fun main(args: Array<String>) {
                                                                         "\n2. Adicionar comentário" +
                                                                         "\n3. Editar comentário" +
                                                                         "\n4. Excluir comentário" +
-                                                                        "\n6. Ver comentários" +
-                                                                        "\n5. Definir etiquetas" +
+                                                                        "\n5. Ver comentários" +
+                                                                        "\n6. Definir etiquetas" +
+                                                                        "\n7. Excluir etiqueta" +
                                                                         "\n0. Sair" +
                                                                         "\nPara obter ajuda pressione h"
 
@@ -200,6 +201,7 @@ fun main(args: Array<String>) {
                                                                                         "Tente novamente.")
                                                                             } else {
                                                                                 trello.comentar(comentario)
+                                                                                println("Comentário adicionado.")
                                                                             }
                                                                         }
 
@@ -216,7 +218,7 @@ fun main(args: Array<String>) {
                                                                             } else {
                                                                                 trello.editarComentario(comment,
                                                                                     newComment)
-                                                                                println("Comentário editado")
+                                                                                println("Comentário editado.")
                                                                             }
                                                                         }
 
@@ -236,13 +238,57 @@ fun main(args: Array<String>) {
                                                                         }
 
                                                                         //Ver Comentários
-                                                                        "6" ->{
+                                                                        "5" ->{
 
                                                                             println(trello.verComentarios())
                                                                         }
-                                                                        //Todo Definir etiquetas
-                                                                        "5" ->{
 
+                                                                        //Definir etiquetas
+                                                                        "6" ->{
+
+                                                                            println("Escolha uma etiqueta:")
+                                                                            println(trello.listarEtiquetas())
+                                                                            val index = readLine()!!.toInt()
+                                                                            println("Adicionar descrição (y/n)?")
+                                                                            val op = readLine()!!.toString()
+
+                                                                            if (index.toString().trim() == "" ||
+                                                                                    index > trello.cores.size){
+                                                                                println("Cor inválida. Tente novamente")
+
+                                                                            } else {
+
+                                                                                if (op == "y"){
+                                                                                    println("Descrição:")
+                                                                                    val desc = readLine()!!.toString()
+                                                                                    trello.definirEtiqueta(index, desc)
+                                                                                    println("Etiqueta definida.")
+                                                                                }
+
+                                                                                trello.definirEtiqueta(index,
+                                                                                    descricao = "")
+                                                                                println("Etiquta definida.")
+                                                                            }
+                                                                        }
+
+                                                                        //Excluir etiqueta
+                                                                        "7" ->{
+                                                                            println("Escolha um cartão:")
+                                                                            println(trello.verCartoes())
+                                                                            val titulo = readLine().toString()
+
+                                                                            println("Escolha uma etiqueta:")
+                                                                            val etiqueta = readLine()!!.toString()
+
+                                                                            if (titulo.trim() == "" || etiqueta.trim()
+                                                                                == ""){
+                                                                                println("Erro. Tente novamente.")
+
+                                                                            } else{
+
+                                                                                trello.excluirEtiquera(etiqueta, titulo)
+                                                                                println("Etiqueta excluida.")
+                                                                            }
                                                                         }
 
                                                                         //Sair
@@ -277,7 +323,7 @@ fun main(args: Array<String>) {
                                                             } else {
                                                                 println("Para onde deseja copiar $tituloCartao?" +
                                                                         "\n1. Mesma lista" +
-                                                                        "\n2. Outra lista" +
+                                                                        "\n2. Outra lista deste quadro" +
                                                                         "\n3. Outro lista de outro quadro")
 
                                                                 val opcaoCopiar = readLine()!!.toString()
@@ -318,7 +364,7 @@ fun main(args: Array<String>) {
                                                             }
                                                         }
 
-                                                        //Todo Mover
+                                                        //Mover
                                                         "5" ->{
 
                                                             println("Escolha um cartão:")
@@ -330,23 +376,42 @@ fun main(args: Array<String>) {
                                                             } else {
                                                                 println("Para onde deseja mover $tituloCartao?" +
                                                                         "\n1. Mesma lista" +
-                                                                        "\n2. Outra lista" +
+                                                                        "\n2. Outra lista deste quadro" +
                                                                         "\n3. Outro lista de outro quadro")
                                                                 print("Opção: ")
                                                                 val opcaoMover = readLine()!!.toString()
 
                                                                 when(opcaoMover){
 
+                                                                    //todo Mover a posição
                                                                     "1" ->{
 
                                                                     }
 
+                                                                    //Mover para uma lista diferente
                                                                     "2" ->{
 
+                                                                        println("Deseja mover para qual lista?")
+                                                                        println(trello.verListas())
+                                                                        val tituloLista = readLine()!!.toString()
+
+                                                                        trello.moverCartao(tituloCartao, tituloLista)
+                                                                        println("$tituloCartao movido.")
                                                                     }
 
+                                                                    //Mover para uma lista de outro quadro
                                                                     "3" ->{
 
+                                                                        println("Deseja mover para qual quadro?")
+                                                                        println(trello.verQuadros())
+                                                                        val tituloQuadro = readLine()!!.toString()
+                                                                        println("Escolha a lista de destino:")
+                                                                        println(trello.verListas(tituloQuadro))
+                                                                        val tituloLista = readLine()!!.toString()
+
+                                                                        trello.moverCartao(tituloCartao, tituloLista,
+                                                                            tituloQuadro)
+                                                                        println("$tituloCartao movido.")
                                                                     }
 
                                                                     else -> println("Opção inválida")
@@ -356,6 +421,7 @@ fun main(args: Array<String>) {
 
                                                         //Renomear Cartão
                                                         "6" ->{
+
                                                             println("Qual cartão deseja renomear?")
                                                             println(trello.verCartoes())
                                                             val tituloCartao = readLine()!!.toString()
@@ -572,6 +638,7 @@ fun main(args: Array<String>) {
                 } else println("E-mail/Nome de usuário ou senha incorretos.")
             }
 
+            //Cadastro de usuário
             "2" ->{
 
                 println("Nome:")

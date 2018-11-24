@@ -23,4 +23,26 @@ class Cartao(var titulo: String) {
     fun isOpen(): Boolean {
         return this.aberto
     }
+
+    fun verComentarios(): String{
+        var dados = ""
+        for (i in 0 until this.comentarios.size){
+            dados += "${i+1}. ${this.comentarios[i]}\n"
+        }
+        return dados
+    }
+
+    fun definirEtiqueta(cor: String, descricao: String){
+        val etiqueta = Etiqueta(cor, descricao)
+        this.etiquetas.add(etiqueta)
+    }
+
+    fun verEtiquetasDoCartao(): String{
+        var dados = ""
+        for (i in 0 until this.etiquetas.size){
+            dados += "${i+1}. ${this.etiquetas[i].cor}"
+        }
+
+        return dados
+    }
 }

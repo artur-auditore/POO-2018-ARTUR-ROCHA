@@ -38,7 +38,7 @@ class Quadro (var nome: String){
     fun verListas():String{
         var dados = ""
         for (i in 0 until this.listas.size) if (!this.listas[i].estaArquivada()){
-            dados += "$i. ${this.listas[i].nome}\n"
+            dados += "${i+1}. ${this.listas[i].nome}\n"
         }
         return dados
     }
@@ -58,7 +58,7 @@ class Quadro (var nome: String){
     fun verListasArquivadas(): String {
         var dados = ""
         for (i in 0 until this.listas.size) if (this.listas[i].estaArquivada()){
-            dados += "$i. ${this.listas[i].nome}\n"
+            dados += "${i+1}. ${this.listas[i].nome}\n"
         }
         return dados
     }
@@ -192,5 +192,19 @@ class Quadro (var nome: String){
         }
 
         return ""
+    }
+
+    //Métodos para etiquetas
+
+    fun definirEtiqueta(cor: String, descricao: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.definirEtiquetas(cor, descricao)
+        }
+    }
+
+    fun excluirEtiqueta(etiqueta: String, titulo: String){
+        for (lista in this.listas) if (lista.isOpen()){
+            lista.excluirEtiqueta(etiqueta, titulo)
+        }
     }
 }
