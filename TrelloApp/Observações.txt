@@ -2,3 +2,5 @@ Algumas das funcionalidades não estão completas:
 
 - Copiar quadros com listas vazias
 - Mover listas e cartões de posição
+
+Getters e Setters em kotlin são implícitos, não é preciso declarar
