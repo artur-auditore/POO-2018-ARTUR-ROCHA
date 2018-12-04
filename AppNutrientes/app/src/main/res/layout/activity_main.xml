@@ -13,6 +13,7 @@
             android:layout_marginTop="20dp">
 
         <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/digite_seu_nome"/>
@@ -24,6 +25,7 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
+            android:onClick="prosseguir"
     />
     <TextView
             android:layout_marginTop="20dp"
