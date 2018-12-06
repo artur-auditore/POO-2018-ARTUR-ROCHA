@@ -10,6 +10,8 @@
     <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="20dp">
 
         <android.support.design.widget.TextInputEditText
@@ -26,12 +28,77 @@
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
             android:onClick="prosseguir"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
     />
+
     <TextView
+            android:visibility="invisible"
+            android:gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:textColor="#000000"
             android:textSize="40sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/text_tbm"/>
+
+    <TextView
+            android:visibility="invisible"
+            android:gravity="center"
+            android:text="@string/selecione_seu_estilo_de_vida"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_selecione"/>
+
+    <RadioGroup android:layout_width="match_parent"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:id="@+id/botoes_radio_group"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
+
+        <RadioButton android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/sedentario"
+                     android:text="@string/sedent_rio"/>
+
+        <RadioButton android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/levemente_ativo"
+                     android:text="@string/levemente_ativo"/>
+
+        <RadioButton android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/moderadamente_ativo"
+                     android:text="@string/moderadamente_ativo"/>
+
+        <RadioButton android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/muito_ativo"
+                     android:text="@string/muito_ativo"/>
+
+    </RadioGroup>
+
+
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/detalhes"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+    />
+
 
 </LinearLayout>
