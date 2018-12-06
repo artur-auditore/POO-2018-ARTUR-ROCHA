@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".UserInfoActivity">
         </activity>
+        <activity android:name=".DetalhesActivity">
+        </activity>
     </application>
 
 </manifest>

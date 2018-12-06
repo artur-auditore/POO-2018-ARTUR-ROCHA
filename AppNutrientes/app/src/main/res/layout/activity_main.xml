@@ -68,22 +68,26 @@
 
         <RadioButton android:layout_width="match_parent"
                      android:layout_height="wrap_content"
+                     android:onClick="btnSelecionado"
                      android:id="@+id/sedentario"
                      android:text="@string/sedent_rio"/>
 
         <RadioButton android:layout_width="match_parent"
                      android:layout_height="wrap_content"
+                     android:onClick="btnSelecionado"
                      android:id="@+id/levemente_ativo"
                      android:text="@string/levemente_ativo"/>
 
         <RadioButton android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      android:id="@+id/moderadamente_ativo"
+                     android:onClick="btnSelecionado"
                      android:text="@string/moderadamente_ativo"/>
 
         <RadioButton android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      android:id="@+id/muito_ativo"
+                     android:onClick="btnSelecionado"
                      android:text="@string/muito_ativo"/>
 
     </RadioGroup>
@@ -91,6 +95,8 @@
 
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/button_detalhes"
+            android:onClick="detalhes"
             android:text="@string/detalhes"
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
