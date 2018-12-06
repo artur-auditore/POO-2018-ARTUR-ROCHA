@@ -11,13 +11,12 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.DecimalFormat
 import android.widget.RadioButton
-import kotlinx.android.synthetic.main.activity_user_info.*
-
 
 class MainActivity : AppCompatActivity() {
 
     object constants{
         const val NOME = "nome"
+        const val TBM = "TBM"
         const val REQUEST_CODE = 1
         const val SEDENTARIO = 1.0
         const val LV_ATIVO = 1.15
@@ -26,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var editNome: EditText
     private lateinit var textTBM: TextView
+    private lateinit var textAltura: TextView
+    private lateinit var textPeso: TextView
+    private lateinit var textNome: TextView
     private lateinit var textoSelecione: TextView
     private var tbmAtual: Double = 0.0
     private lateinit var buttonDetalhes: Button
@@ -43,6 +45,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUpViews() {
         editNome = edit_nome
         textTBM = text_tbm
+        textAltura = text_altura
+        textPeso = text_peso
+        textNome = text_nome
 
         textoSelecione = text_selecione
         botoes = botoes_radio_group
@@ -69,14 +74,29 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == constants.REQUEST_CODE){
             if (resultCode == Activity.RESULT_OK){
+
                 val tbm = data!!.getDoubleExtra(UserInfoActivity.constants.TBM, 0.0)
                 tbmAtual = tbm
-                textTBM.text = "${decimalFormat.format(tbm)} kcal"
+                val altura  = data.getDoubleExtra(UserInfoActivity.constants.ALTURA, 0.0)
+                val peso= data.getDoubleExtra(UserInfoActivity.constants.PESO, 0.0)
 
+
+                textTBM.text = "${decimalFormat.format(tbm)} kcal"
                 textTBM.visibility = View.VISIBLE
+
+                textNome.text = "${editNome.text.toString()}, suas informações:"
+                textNome.visibility = View.VISIBLE
+
+                textAltura.text = "Altura: $altura m"
+                textAltura.visibility = View.VISIBLE
+
+                textPeso.text = "Peso: $peso kg"
+                textPeso.visibility = View.VISIBLE
+
                 textoSelecione.visibility = View.VISIBLE
                 botoes.visibility = View.VISIBLE
 
+                editNome.text.clear()
             }
         }
     }
@@ -120,8 +140,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun detalhes(view: View){
-        //TODO por enquanto
-        startActivity(Intent(this, DetalhesActivity::class.java))
+        val intent = Intent(this, DetalhesActivity::class.java)
+        intent.putExtra(constants.TBM, tbmAtual)
+        intent.putExtra(constants.NOME, editNome.text.toString())
+
+        startActivity(intent)
     }
 
 }

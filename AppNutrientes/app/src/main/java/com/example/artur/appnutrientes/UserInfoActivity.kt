@@ -15,6 +15,9 @@ class UserInfoActivity : AppCompatActivity() {
 
     object constants{
         const val TBM = "tbm"
+        const val NOME = "nome"
+        const val ALTURA = "altura"
+        const val PESO = "peso"
     }
     private lateinit var textSaudacao: TextView
     private lateinit var editPeso: EditText
@@ -36,7 +39,7 @@ class UserInfoActivity : AppCompatActivity() {
     }
 
     private fun saudacao(){
-        val saudacao = "Olá ${intent.getStringExtra("nome")}, digite suas informações"
+        val saudacao = "Olá ${intent.getStringExtra(constants.NOME)}, digite suas informações"
         textSaudacao.text = saudacao
     }
 
@@ -48,7 +51,7 @@ class UserInfoActivity : AppCompatActivity() {
     fun calcularTBM(view: View){
 
         val peso = editPeso.text.toString()
-        val altura = editPeso.text.toString()
+        val altura = editAltura.text.toString()
 
         if (peso.trim() == "" || altura.trim() == ""){
             Toast.makeText(this, "Digite valores válidos!", Toast.LENGTH_SHORT).show()
@@ -58,6 +61,8 @@ class UserInfoActivity : AppCompatActivity() {
 
             val intent = Intent()
             intent.putExtra(constants.TBM, tbm)
+            intent.putExtra(constants.ALTURA, altura.toDouble())
+            intent.putExtra(constants.PESO, peso.toDouble())
 
             setResult(Activity.RESULT_OK, intent); finish()
         }
