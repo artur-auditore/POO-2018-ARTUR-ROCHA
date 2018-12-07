@@ -18,10 +18,6 @@ class MainActivity : AppCompatActivity() {
         const val NOME = "nome"
         const val TBM = "TBM"
         const val REQUEST_CODE = 1
-        const val SEDENTARIO = 1.0
-        const val LV_ATIVO = 1.15
-        const val MD_ATIVO = 1.25
-        const val MUITO_ATIVO = 1.48
     }
     private lateinit var editNome: EditText
     private lateinit var textTBM: TextView
@@ -30,10 +26,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textNome: TextView
     private lateinit var textoSelecione: TextView
     private var tbmAtual: Double = 0.0
+    private lateinit var nomeAtual: String
+    private var result: Double = 0.0
     private lateinit var buttonDetalhes: Button
 
     private lateinit var botoes: RadioGroup
-    var decimalFormat = DecimalFormat("#####.#")
+    var decimalFormat = DecimalFormat("#####.##")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         if (nome.trim() == ""){
             Toast.makeText(this, "Nome Inválido!", Toast.LENGTH_SHORT).show()
         } else{
-
+            nomeAtual = nome
             val intent = Intent(this, UserInfoActivity::class.java)
 
             intent.putExtra(constants.NOME, nome)
@@ -104,49 +102,36 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun btnSelecionado(view: View){
         val checked = (view as RadioButton).isChecked
-        val result: Double
+        var estiloVida = 0.0
 
         when(view.id){
 
             R.id.sedentario ->{
-                if (checked) {
-                    result = tbmAtual * constants.SEDENTARIO
-                    textTBM.text = "${decimalFormat.format(result)} kcal"
-                }
+                if (checked) estiloVida = 1.0
             }
 
             R.id.levemente_ativo ->{
-                if (checked) {
-                    result = tbmAtual * constants.LV_ATIVO
-                    textTBM.text = "${decimalFormat.format(result)} kcal"
-                }
+                if (checked) estiloVida = 1.11
             }
 
-            R.id.moderadamente_ativo ->{
-                if (checked) {
-                    result = tbmAtual * constants.MD_ATIVO
-                    textTBM.text = "${decimalFormat.format(result)} kcal"
-                }
+            R.id.moderadamente_ativo -> {
+                if (checked) estiloVida = 1.25
             }
-
             R.id.muito_ativo ->{
-                if (checked) {
-                    result = tbmAtual * constants.MUITO_ATIVO
-                    textTBM.text = "${decimalFormat.format(result)} kcal"
-                }
+                if (checked) estiloVida = 1.48
             }
         }
+        result = tbmAtual * estiloVida
+        textTBM.text = "${decimalFormat.format(result)} kcal"
         buttonDetalhes.visibility = View.VISIBLE
     }
 
     fun detalhes(view: View){
         val intent = Intent(this, DetalhesActivity::class.java)
-        intent.putExtra(constants.TBM, tbmAtual)
-        intent.putExtra(constants.NOME, editNome.text.toString())
+        intent.putExtra(constants.NOME, nomeAtual)
+        intent.putExtra(constants.TBM, result)
 
         startActivity(intent)
     }
 
 }
-
-
