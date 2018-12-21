@@ -5,11 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.objectbox.Box
 import kotlinx.android.synthetic.main.item_tweet.view.*
 
 class TweetAdapter(private val tweets: MutableList<Tweet>,
-                   private val tweetsBox: Box<Tweet>,
                    private val context: Context): RecyclerView.Adapter<TweetAdapter.ViewHolder>(){
 
     class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){

@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:5481388406721465824",
-      "lastPropertyId": "5:443190850572605948",
+      "lastPropertyId": "4:6915523740681435267",
       "name": "Tweet",
       "properties": [
         {
@@ -23,10 +23,6 @@
         {
           "id": "4:6915523740681435267",
           "name": "id"
-        },
-        {
-          "id": "5:443190850572605948",
-          "name": "username"
         }
       ],
       "relations": []
