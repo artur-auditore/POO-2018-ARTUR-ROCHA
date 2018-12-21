@@ -49,7 +49,7 @@ class TweetAdapter(private val tweets: MutableList<Tweet>,
     }
 
     private fun popMenu(itemView: View){
-        
+
         itemView.setOnLongClickListener { it ->
             val popup = PopupMenu(context, it)
             popup.menuInflater.inflate(R.menu.menu_popup, popup.menu)

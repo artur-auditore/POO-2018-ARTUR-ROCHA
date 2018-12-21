@@ -30,7 +30,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addTweets(){
-        for (i in 0 .. 1000){
+        tweetsBox.put(Tweet("Artur", "@artur_auditore",
+            "Deus tenha misericórdia dessa nação", "21/12/2018"))
+        tweetsBox.put(Tweet("Hadadd 13", "@Haddad_Fernando",
+            "Bora pro debate @jairbolsonaro", "16/10/2018"))
+        tweetsBox.put(Tweet("Jair Bolsonaro", "@jairbolsonaro",
+            "Brasil acima de tudo, Deus acima de todos!", "28/10/2018"))
+        tweetsBox.put(Tweet("Quebrando o Tabu", "@aquebrandotabu",
+            "Ninguém solta a mão de ninguém", "21/12/2018"))
+        tweetsBox.put(Tweet("CBM", "@cbmon",
+            "Conservador nos costumes e liberal na economia é a piada do ano", "01/08/2018"))
+        tweetsBox.put(Tweet("Neymar", "@neymarjr",
+            "pior copa foi a desse ano", "11/07/2022"))
+
+        for (i in 0 .. 994){
             tweetsBox.put(Tweet("Artur", "@artur_auditore",
                 "Deus tenha misericórdia dessa nação", "21/12/2018"))
         }
