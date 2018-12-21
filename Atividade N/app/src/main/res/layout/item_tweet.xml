@@ -22,18 +22,17 @@
 
             <TextView
                     android:id="@+id/text_nome"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textSize="15sp"
                     tools:text="Nome" />
             <TextView
                     android:id="@+id/text_username"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:textSize="15sp"
                     tools:text="username" />
 
@@ -46,8 +45,6 @@
                 android:layout_marginBottom="8dp"
                 android:background="@android:color/darker_gray"
                 android:focusable="false" />
-
-
 
         <TextView
                 android:id="@+id/text_tweet"
