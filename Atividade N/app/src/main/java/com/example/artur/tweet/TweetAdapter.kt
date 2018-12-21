@@ -2,6 +2,7 @@ package com.example.artur.tweet
 
 import android.content.Context
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -43,9 +44,12 @@ class TweetAdapter(private val tweets: MutableList<Tweet>,
             Snackbar.make(it, "Você clicou no tweet do ${tweet.username} - ${tweet.texto}",
                 Snackbar.LENGTH_SHORT).show()
         }
+
+        popMenu(holder.itemView)
     }
 
-    private fun popMenu(itemView: View, tweet: Tweet){
+    private fun popMenu(itemView: View){
+        
         itemView.setOnLongClickListener { it ->
             val popup = PopupMenu(context, it)
             popup.menuInflater.inflate(R.menu.menu_popup, popup.menu)
@@ -54,18 +58,23 @@ class TweetAdapter(private val tweets: MutableList<Tweet>,
 
                 when (item.itemId) {
                     R.id.op_curtir -> {
-                        
+                        val alertDialog = AlertDialog.Builder(context)
+                        alertDialog.setTitle("Curtir")
+                        alertDialog.setMessage("Curtido com sucesso!")
+                        alertDialog.setNeutralButton("OK"){ _, _ ->}
+                        alertDialog.create().show()
                     }
                     R.id.op_retweetar ->{
-
+                        val alertDialog = AlertDialog.Builder(context)
+                        alertDialog.setTitle("Retweetar")
+                        alertDialog.setMessage("Retweetado com sucesso!")
+                        alertDialog.setNeutralButton("OK"){ _, _ ->}
+                        alertDialog.create().show()
                     }
                 }
-
                 false
             }
-
             popup.show()
-
             true
         }
     }
