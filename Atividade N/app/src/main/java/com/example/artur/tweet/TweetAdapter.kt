@@ -6,25 +6,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.objectbox.Box
+import kotlinx.android.synthetic.main.item_tweet.view.*
 
 class TweetAdapter(private val tweets: MutableList<Tweet>,
                    private val tweetsBox: Box<Tweet>,
                    private val context: Context): RecyclerView.Adapter<TweetAdapter.ViewHolder>(){
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_tweet, p0, false))
+    class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
+        fun bind(tweet: Tweet){
+            val nome = itemView.text_nome
+            val username = itemView.text_username
+            val texto = itemView.text_tweet
+            val data = itemView.text_data
+
+            nome.text = tweet.nomeAutor
+            username.text = tweet.username
+            texto.text = tweet.texto
+            data.text = tweet.data
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_tweet, parent, false))
     }
 
     override fun getItemCount(): Int {
         return tweets.size
     }
 
-    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val tweet = tweets[position]
+        holder.bind(tweet)
     }
 
 }
